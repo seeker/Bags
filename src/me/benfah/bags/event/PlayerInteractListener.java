@@ -37,7 +37,6 @@ public class PlayerInteractListener implements Listener{
 
 						if(h.getItemMeta().hasLore())
 						{
-							System.out.println("test");
 
 							String ints = h.getItemMeta().getLore().iterator().next();
 							int id = Integer.parseInt(ints);
@@ -136,23 +135,6 @@ public class PlayerInteractListener implements Listener{
 		
 		
 	}
-	@EventHandler
-	public void onInteractEntity(PlayerInteractAtEntityEvent e)
-	{
-		System.out.println("test");
-		if((e.getPlayer().getItemInHand().hasItemMeta() ? e.getPlayer().getItemInHand().getItemMeta().spigot().isUnbreakable() : false))
-		{
-			if((e.getPlayer().getItemInHand().getType() == Material.STONE_SWORD) && e.getPlayer().getItemInHand().getDurability() == 10)
-			{
-			
-			
-			}
-			
-			
-			
-		}
-		
-		
-	}
+	
 	
 }

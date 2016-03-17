@@ -157,7 +157,6 @@ public class Bags extends JavaPlugin{
 		
 		if(command.getName().equalsIgnoreCase("bags"))
 		{
-			System.out.println("YAY!");
 			if(args.length == 1)
 			{
 				if(args[0].equalsIgnoreCase("credits"))
