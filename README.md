@@ -10,3 +10,5 @@ Finished!
 
 ## Spigot page
 https://www.spigotmc.org/resources/bags.20094/
+
+Feel fre to contribute! :D
