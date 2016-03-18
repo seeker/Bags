@@ -10,7 +10,9 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.inventory.InventoryAction;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -136,5 +138,30 @@ public class PlayerInteractListener implements Listener{
 		
 	}
 	
-	
+	@EventHandler
+	public void onInventoryMove(InventoryClickEvent e)
+	{
+		if(e.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY)
+		{
+			if(e.getInventory().getName().equals("Bag"))
+			{
+				if(e.getCurrentItem().getType() != Material.AIR)
+				{
+				if(Util.isUnbreakableAndHasDamage(e.getCurrentItem(), (short)10))
+				e.setCancelled(true);
+				if(Util.isUnbreakableAndHasDamage(e.getCurrentItem(), (short)11))
+				e.setCancelled(true);
+				if(Util.isUnbreakableAndHasDamage(e.getCurrentItem(), (short)12))
+				e.setCancelled(true);
+				if(Util.isUnbreakableAndHasDamage(e.getCurrentItem(), (short)13))
+				e.setCancelled(true);
+				if(Util.isUnbreakableAndHasDamage(e.getCurrentItem(), (short)14))
+				e.setCancelled(true);
+				}
+			}
+			
+		}
+		
+	}
+
 }
