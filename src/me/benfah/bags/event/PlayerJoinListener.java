@@ -22,7 +22,7 @@ public class PlayerJoinListener implements Listener{
 			if(e.getPlayer().hasPermission("bags.resource"))
 			{
 				if(Bags.cfg.getBoolean("resourcepack"))
-					e.getPlayer().setResourcePack("https://www.dropbox.com/s/dc2bpx4w0loavuo/Bags.zip?dl=1");
+				e.getPlayer().setResourcePack("https://www.dropbox.com/s/dc2bpx4w0loavuo/Bags.zip?dl=1");
 			}
 		}
 		

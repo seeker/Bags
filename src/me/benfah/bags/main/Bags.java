@@ -37,10 +37,19 @@ public class Bags extends JavaPlugin{
 		Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
 		cfg.addDefault("resourcepack", true);
+		
 		bm = new BagManager(this);
 		Bukkit.getScheduler().runTaskTimerAsynchronously(this, new SaveRunnable(), 2400L, 2400L);
+		File f = new File(getDataFolder(), "saveb64.dat");
 		try {
+			if(!f.exists())
+			{
+				this.getDataFolder().mkdirs();
+				f.createNewFile();
+			}
+			else
 			bm.init();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

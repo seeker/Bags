@@ -83,7 +83,10 @@ public class BagManager
 		if(!new File(inst.getDataFolder(), "saveb64.dat").exists())
 		{
 			try {
-				new File(inst.getDataFolder(), "saveb64.dat").createNewFile();
+				inst.getDataFolder().mkdirs();
+				File f = new File(inst.getDataFolder(), "saveb64.dat");
+				
+				f.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
