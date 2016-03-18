@@ -80,6 +80,15 @@ public class BagManager
 	
 	public void shutdown()
 	{
+		if(!new File(inst.getDataFolder(), "saveb64.dat").exists())
+		{
+			try {
+				new File(inst.getDataFolder(), "saveb64.dat").createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
 		bag64.clear();
 		
 		Iterator<Integer> itk = bag.keySet().iterator();
