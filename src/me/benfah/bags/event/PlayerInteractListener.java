@@ -12,24 +12,30 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 
 import me.benfah.bags.main.Bags;
 import me.benfah.bags.util.BagManager;
 import me.benfah.bags.util.Util;
 
 public class PlayerInteractListener implements Listener{
-
+	final Permission bag_open_small = new Permission("bag.open.small", PermissionDefault.NOT_OP);
+	final Permission bag_open_big = new Permission("bag.open.big", PermissionDefault.NOT_OP);
+	final Permission bag_open_enchant = new Permission("bag.open.enchant", PermissionDefault.NOT_OP);
+	final Permission bag_open_crafting = new Permission("bag.open.crafting", PermissionDefault.NOT_OP);
+	final Permission bag_open_ender = new Permission("bag.open.ender", PermissionDefault.NOT_OP);
 	
 	
 	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e)
 	{
+		
 			Player p = e.getPlayer();
 			ItemStack h = p.getItemInHand();
 				if((h.getType() == Material.STONE_SWORD))
@@ -39,14 +45,15 @@ public class PlayerInteractListener implements Listener{
 
 						if(h.getItemMeta().hasLore())
 						{
-
-							String ints = h.getItemMeta().getLore().iterator().next();
-							int id = Integer.parseInt(ints);
-							Inventory inv = BagManager.bag.get(id) != null ? (Inventory) BagManager.bag.get(id)[0] : Bukkit.createInventory(p, 27, "Bag");
-							
-							p.openInventory(inv);
-							BagManager.bag.put(id, new Object[]{inv, inv.getSize()});
-							
+							if(p.hasPermission(bag_open_small))
+							{
+								String ints = h.getItemMeta().getLore().iterator().next();
+								int id = Integer.parseInt(ints);
+								Inventory inv = BagManager.bag.get(id) != null ? ((Inventory) BagManager.bag.get(id)[0]) : Bukkit.createInventory(p, 27, "Bag");
+								
+								p.openInventory(inv);
+								BagManager.bag.put(id, new Object[]{inv, inv.getSize()});
+							}
 							
 							
 						}
@@ -59,6 +66,7 @@ public class PlayerInteractListener implements Listener{
 							Bags.cfg.set("bagid",	Bags.cfg.getInt("bagid") + 1);
 							hm.setLore(lore);
 							h.setItemMeta(hm);
+							
 						}
 							
 							
@@ -72,14 +80,15 @@ public class PlayerInteractListener implements Listener{
 
 						if(h.getItemMeta().hasLore())
 						{
-
-							String ints = h.getItemMeta().getLore().iterator().next();
-							int id = Integer.parseInt(ints);
-							Inventory inv = BagManager.bag.get(id) != null ? (Inventory) BagManager.bag.get(id)[0] : Bukkit.createInventory(p, 54, "Bag");
-							
-							p.openInventory(inv);
-							BagManager.bag.put(id, new Object[]{inv, inv.getSize()});
-							
+							if(p.hasPermission(bag_open_big))
+							{
+								String ints = h.getItemMeta().getLore().iterator().next();
+								int id = Integer.parseInt(ints);
+								Inventory inv = BagManager.bag.get(id) != null ? (Inventory) BagManager.bag.get(id)[0] : Bukkit.createInventory(p, 54, "Bag");
+								
+								p.openInventory(inv);
+								BagManager.bag.put(id, new Object[]{inv, inv.getSize()});
+							}
 							
 							
 						}
@@ -103,25 +112,28 @@ public class PlayerInteractListener implements Listener{
 					if(Util.isUnbreakableAndHasDamage(h, (short) 12))
 					{
 						
-							
-				         Block b = p.getWorld().getBlockAt(new Location(p.getWorld(), 10000,255,10000));
-				         if(!(b.getType() == Material.ENCHANTMENT_TABLE))
-				         b.setType(Material.ENCHANTMENT_TABLE);
-				         p.openEnchanting(b.getLocation(), true);
-
+						if(p.hasPermission(bag_open_enchant))
+						{
+					        Block b = p.getWorld().getBlockAt(new Location(p.getWorld(), 10000,255,10000));
+					        if(!(b.getType() == Material.ENCHANTMENT_TABLE))
+					        b.setType(Material.ENCHANTMENT_TABLE);
+					        p.openEnchanting(b.getLocation(), true);
+						}
 					
 					}
 					if(Util.isUnbreakableAndHasDamage(h, (short) 13))
 					{
-						
+						if(p.hasPermission(bag_open_crafting))
+						{
 						p.openWorkbench(null, true);
-						
+						}
 					}
 					if(Util.isUnbreakableAndHasDamage(h, (short) 14))
 					{
-						
+						if(p.hasPermission(bag_open_ender))
+						{
 						p.openInventory(p.getEnderChest());
-						
+						}
 					}
 				}
 			

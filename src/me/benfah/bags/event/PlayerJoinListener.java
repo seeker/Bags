@@ -7,6 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 
 import me.benfah.bags.main.Bags;
 
@@ -19,9 +21,8 @@ public class PlayerJoinListener implements Listener{
 	{
 		if(!tl.contains(e.getPlayer()))
 		{
-			if(e.getPlayer().hasPermission("bags.resource"))
+			if(e.getPlayer().hasPermission(new Permission("bag.resource",PermissionDefault.NOT_OP)))
 			{
-				if(Bags.cfg.getBoolean("resourcepack"))
 				e.getPlayer().setResourcePack("https://www.dropbox.com/s/dc2bpx4w0loavuo/Bags.zip?dl=1");
 			}
 		}

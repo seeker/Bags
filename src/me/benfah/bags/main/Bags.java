@@ -33,11 +33,11 @@ public class Bags extends JavaPlugin{
 	public void onEnable() {
 		
 		cfgFile = new File(getDataFolder(), "cfg.yml");
+		
 		cfg = YamlConfiguration.loadConfiguration(cfgFile);
 		Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
 		cfg.addDefault("resourcepack", true);
-		
 		bm = new BagManager(this);
 		Bukkit.getScheduler().runTaskTimerAsynchronously(this, new SaveRunnable(), 2400L, 2400L);
 		File f = new File(getDataFolder(), "saveb64.dat");
