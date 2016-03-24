@@ -21,7 +21,7 @@ public class PlayerJoinListener implements Listener{
 	{
 		if(!tl.contains(e.getPlayer()))
 		{
-			if(e.getPlayer().hasPermission(new Permission("bag.resource",PermissionDefault.NOT_OP)))
+			if(e.getPlayer().hasPermission(new Permission("bag.resource",PermissionDefault.TRUE)))
 			{
 				e.getPlayer().setResourcePack("https://www.dropbox.com/s/dc2bpx4w0loavuo/Bags.zip?dl=1");
 			}

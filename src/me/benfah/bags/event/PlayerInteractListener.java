@@ -24,11 +24,11 @@ import me.benfah.bags.util.BagManager;
 import me.benfah.bags.util.Util;
 
 public class PlayerInteractListener implements Listener{
-	final Permission bag_open_small = new Permission("bag.open.small", PermissionDefault.NOT_OP);
-	final Permission bag_open_big = new Permission("bag.open.big", PermissionDefault.NOT_OP);
-	final Permission bag_open_enchant = new Permission("bag.open.enchant", PermissionDefault.NOT_OP);
-	final Permission bag_open_crafting = new Permission("bag.open.crafting", PermissionDefault.NOT_OP);
-	final Permission bag_open_ender = new Permission("bag.open.ender", PermissionDefault.NOT_OP);
+	final Permission bag_open_small = new Permission("bag.open.small", PermissionDefault.TRUE);
+	final Permission bag_open_big = new Permission("bag.open.big", PermissionDefault.TRUE);
+	final Permission bag_open_enchant = new Permission("bag.open.enchant", PermissionDefault.TRUE);
+	final Permission bag_open_crafting = new Permission("bag.open.crafting", PermissionDefault.TRUE);
+	final Permission bag_open_ender = new Permission("bag.open.ender", PermissionDefault.TRUE);
 	
 	
 	@SuppressWarnings("deprecation")
@@ -37,7 +37,7 @@ public class PlayerInteractListener implements Listener{
 	{
 		
 			Player p = e.getPlayer();
-			ItemStack h = p.getItemInHand();
+			ItemStack h = p.getInventory().getItemInMainHand();
 				if((h.getType() == Material.STONE_SWORD))
 				{
 					if(Util.isUnbreakableAndHasDamage(h, (short) 10))
