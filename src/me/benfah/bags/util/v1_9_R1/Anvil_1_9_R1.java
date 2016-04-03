@@ -4,7 +4,6 @@ import org.bukkit.Sound;
 import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import me.benfah.bags.util.AnvilInterface;
 import net.minecraft.server.v1_9_R1.BlockPosition;
 import net.minecraft.server.v1_9_R1.ChatMessage;
 import net.minecraft.server.v1_9_R1.ContainerAnvil;
@@ -12,7 +11,7 @@ import net.minecraft.server.v1_9_R1.EntityHuman;
 import net.minecraft.server.v1_9_R1.EntityPlayer;
 import net.minecraft.server.v1_9_R1.PacketPlayOutOpenWindow;
 
-public class Anvil_1_9_R1 extends ContainerAnvil implements AnvilInterface{
+public class Anvil_1_9_R1 extends ContainerAnvil {
 
    public Anvil_1_9_R1(EntityHuman entityHuman) {
       super(entityHuman.inventory, entityHuman.world, new BlockPosition(entityHuman.locX, entityHuman.locY, entityHuman.locZ), entityHuman);

@@ -17,7 +17,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import me.benfah.bags.event.PlayerInteractListener;
 import me.benfah.bags.event.PlayerJoinListener;
-import me.benfah.bags.util.AnvilInterface;
 import me.benfah.bags.util.BagManager;
 import me.benfah.bags.util.SaveRunnable;
 
@@ -26,7 +25,6 @@ public class Bags extends JavaPlugin{
 	public static FileConfiguration cfg;
 	public static File cfgFile;
 	public static BagManager bm;
-	public static AnvilInterface anv;
 	
 	public static void playOpenSound(Player p){p.playSound(p.getLocation(), Sound.ENTITY_BAT_TAKEOFF,  0.5f, 1f);}
 	@Override
