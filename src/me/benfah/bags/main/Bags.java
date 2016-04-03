@@ -5,22 +5,19 @@ import java.io.IOException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.benfah.bags.event.PlayerInteractListener;
 import me.benfah.bags.event.PlayerJoinListener;
-import me.benfah.bags.util.Attributes;
-import me.benfah.bags.util.Attributes.Attribute;
-import me.benfah.bags.util.Attributes.AttributeType;
+import me.benfah.bags.util.AnvilInterface;
 import me.benfah.bags.util.BagManager;
 import me.benfah.bags.util.SaveRunnable;
 
@@ -29,8 +26,12 @@ public class Bags extends JavaPlugin{
 	public static FileConfiguration cfg;
 	public static File cfgFile;
 	public static BagManager bm;
+	public static AnvilInterface anv;
+	
+	public static void playOpenSound(Player p){p.playSound(p.getLocation(), Sound.ENTITY_BAT_TAKEOFF,  0.5f, 1f);}
 	@Override
 	public void onEnable() {
+		
 		
 		cfgFile = new File(getDataFolder(), "cfg.yml");
 		
@@ -54,110 +55,7 @@ public class Bags extends JavaPlugin{
 			e.printStackTrace();
 		}
 		
-		ItemStack bag = new ItemStack(Material.STONE_SWORD);
-		ItemMeta im = bag.getItemMeta();
-		im.setDisplayName(ChatColor.RESET + "Bag");
-		im.spigot().setUnbreakable(true);
-		bag.setItemMeta(im);
-		bag.setDurability((short) 10);
-		Attributes ab = new Attributes(bag);
-		ab.add(Attribute.newBuilder().name("AttackSpeed").type(AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
-		ab.add(Attribute.newBuilder().name("AttackDamage").type(AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
-		ItemStack newStack = ab.getStack();
-		
-		ShapedRecipe sr = new ShapedRecipe(Attributes.hideFlags(newStack, 38));
-		sr.shape("ILI", "LSL", "LLL");
-		sr.setIngredient('S', Material.STRING);
-		sr.setIngredient('L', Material.LEATHER);
-		sr.setIngredient('I', Material.IRON_INGOT);
-
-		Bukkit.addRecipe(sr);
-		
-		ItemStack bagbig = new ItemStack(Material.STONE_SWORD);
-		ItemMeta imb = bagbig.getItemMeta();
-		imb.setDisplayName(ChatColor.RESET + "Big Bag");
-		imb.spigot().setUnbreakable(true);
-		bagbig.setItemMeta(imb);
-		bagbig.setDurability((short) 11);
-		Attributes abb = new Attributes(bagbig);
-		abb.add(Attribute.newBuilder().name("AttackSpeed").type(AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
-		abb.add(Attribute.newBuilder().name("AttackDamage").type(AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
-		ItemStack newStackB = abb.getStack();
-		
-		ShapedRecipe srB = new ShapedRecipe(Attributes.hideFlags(newStackB, 38));
-		srB.shape("GLG", "LSL", "LLL");
-		srB.setIngredient('S', Material.STRING);
-		srB.setIngredient('L', Material.LEATHER);
-		srB.setIngredient('G', Material.GOLD_INGOT);
-
-		Bukkit.addRecipe(srB);
-		
-		ItemStack bagenc = new ItemStack(Material.STONE_SWORD);
-		ItemMeta ime = bagenc.getItemMeta();
-		ime.setDisplayName(ChatColor.RESET + "Enchantment Bag");
-		ime.spigot().setUnbreakable(true);
-		bagenc.setItemMeta(ime);
-		bagenc.setDurability((short) 12);
-		Attributes abe = new Attributes(bagenc);
-		abe.add(Attribute.newBuilder().name("AttackSpeed").type(AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
-		abe.add(Attribute.newBuilder().name("AttackDamage").type(AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
-		ItemStack newStackE = abe.getStack();
-		
-		ShapedRecipe srE = new ShapedRecipe(Attributes.hideFlags(newStackE, 38));
-		srE.shape("GLG", "LSL", "LEL");
-		srE.setIngredient('S', Material.STRING);
-		srE.setIngredient('L', Material.LEATHER);
-		srE.setIngredient('G', Material.GOLD_INGOT);
-		srE.setIngredient('E', Material.ENCHANTMENT_TABLE);
-
-		
-		Bukkit.addRecipe(srE);
-		
-		ItemStack bagcra = new ItemStack(Material.STONE_SWORD);
-		ItemMeta imc = bagcra.getItemMeta();
-		imc.setDisplayName(ChatColor.RESET + "Crafting Bag");
-		imc.spigot().setUnbreakable(true);
-		bagcra.setItemMeta(imc);
-		bagcra.setDurability((short) 13);
-		Attributes abc = new Attributes(bagcra);
-		abc.add(Attribute.newBuilder().name("AttackSpeed").type(AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
-		abc.add(Attribute.newBuilder().name("AttackDamage").type(AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
-		ItemStack newStackC = abc.getStack();
-		
-		ShapedRecipe srC = new ShapedRecipe(Attributes.hideFlags(newStackC, 38));
-		srC.shape("ILI", "LSL", "LCL");
-		srC.setIngredient('S', Material.STRING);
-		srC.setIngredient('L', Material.LEATHER);
-		srC.setIngredient('C', Material.WORKBENCH);
-		srC.setIngredient('I', Material.IRON_INGOT);
-
-		
-		Bukkit.addRecipe(srC);
-		
-		
-		ItemStack bagend = new ItemStack(Material.STONE_SWORD);
-		ItemMeta imen = bagend.getItemMeta();
-		imen.setDisplayName(ChatColor.RESET + "Ender Bag");
-		imen.spigot().setUnbreakable(true);
-		bagend.setItemMeta(imen);
-		bagend.setDurability((short) 14);
-		Attributes aben = new Attributes(bagend);
-		aben.add(Attribute.newBuilder().name("AttackSpeed").type(AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
-		aben.add(Attribute.newBuilder().name("AttackDamage").type(AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
-		ItemStack newStackEN = aben.getStack();
-		
-		
-		ShapedRecipe srEN = new ShapedRecipe(Attributes.hideFlags(newStackEN, 38));
-		srEN.shape("GDG", "LSL", "LEL");
-		srEN.setIngredient('S', Material.STRING);
-		srEN.setIngredient('L', Material.LEATHER);
-		srEN.setIngredient('G', Material.GOLD_INGOT);
-		srEN.setIngredient('D', Material.DIAMOND);
-		srEN.setIngredient('E', Material.ENDER_CHEST);
-
-		
-		Bukkit.addRecipe(srEN);
-		
+		RecipeManager rm  = new RecipeManager();
 		super.onEnable();
 	}
 	
@@ -166,7 +64,7 @@ public class Bags extends JavaPlugin{
 		
 		if(command.getName().equalsIgnoreCase("bags"))
 		{
-			if(args.length == 1)
+			if(args.length >= 1)
 			{
 				if(args[0].equalsIgnoreCase("credits"))
 				{
@@ -178,7 +76,7 @@ public class Bags extends JavaPlugin{
 				}
 				if(args[0].equalsIgnoreCase("resource"))
 				{
-					if(sender.hasPermission("bags.resource"))
+					if(sender.hasPermission(new Permission("bag.resource", PermissionDefault.TRUE)))
 					{
 						if(sender instanceof Player)
 						{
@@ -189,14 +87,52 @@ public class Bags extends JavaPlugin{
 						System.out.println("You are not a player!");
 					}
 					
+					
 
+				}
+				if(args[0].equalsIgnoreCase("give"))
+				{
+					if(sender.hasPermission(new Permission("bag.give", PermissionDefault.OP)))
+					{
+						if(args.length == 2)
+						{
+							switch(args[1].toLowerCase())
+							{
+								case "normal":
+									((Player)sender).getInventory().addItem(RecipeManager.getBag());
+								case "big":
+									((Player)sender).getInventory().addItem(RecipeManager.getBigBag());
+								case "craft":
+									((Player)sender).getInventory().addItem(RecipeManager.getCraftingBag());
+								case "enchant":
+									((Player)sender).getInventory().addItem(RecipeManager.getEnchantmentBag());
+								case "ender":
+									((Player)sender).getInventory().addItem(RecipeManager.getEnderBag());
+								case "anvil":
+									((Player)sender).getInventory().addItem(RecipeManager.getAnvilBag());
+								
+							}
+							
+							
+							
+							
+						}
+						else
+						sender.sendMessage(ChatColor.RED + "Syntax: /bags give <normal:big:craft:enchant:ender:anvil>");
+					}
+					else
+					sender.sendMessage(ChatColor.RED + "You are not allowed to do this!");
 				}
 				
 				
 				
+				
+			}
+			else
+			{
 				sender.sendMessage(ChatColor.GOLD + "/bags credits | Shows the credits of the plugin :3");
 				sender.sendMessage(ChatColor.GOLD + "/bags resource | Sends a resourcepack request");
-				
+				sender.sendMessage(ChatColor.GOLD + "/bags give <Bag> | Gives you the bag you specified");
 			}
 			
 		}
