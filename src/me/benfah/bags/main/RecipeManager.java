@@ -80,73 +80,59 @@ public class RecipeManager {
 		srAN.setIngredient('L', Material.LEATHER);
 		srAN.setIngredient('S', Material.STRING);
 		srAN.setIngredient('A', Material.ANVIL);
-				Bukkit.addRecipe(srAN);
+		Bukkit.addRecipe(srAN);
 	}
 	
-	
+	public static void setDamageAndUnbreakable(ItemStack stack, int damage, String displayName)
+	{
+		ItemMeta im = stack.getItemMeta();
+		im.setDisplayName(ChatColor.RESET + displayName);
+		im.spigot().setUnbreakable(true);
+		stack.setItemMeta(im);
+		stack.setDurability((short) damage);
+	}
 	public static ItemStack getBag()
 	{
 		ItemStack bag = new ItemStack(Material.STONE_SWORD);
-		ItemMeta im = bag.getItemMeta();
-		im.setDisplayName(ChatColor.RESET + "Bag");
-		im.spigot().setUnbreakable(true);
-		bag.setItemMeta(im);
-		bag.setDurability((short) 10);
+		setDamageAndUnbreakable(bag, 10, "Bag");
 		
 		return doStandardModifiers(bag);
 	}
 	public static ItemStack getAnvilBag()
 	{
 		ItemStack anvilbag = new ItemStack(Material.STONE_SWORD);
-		ItemMeta aim = anvilbag.getItemMeta();
-		aim.setDisplayName(ChatColor.RESET + "Anvil Bag");
-		aim.spigot().setUnbreakable(true);
-		anvilbag.setItemMeta(aim);
-		anvilbag.setDurability((short) 15);
+		setDamageAndUnbreakable(anvilbag, 15, "Anvil Bag");
+
 		
 		return doStandardModifiers(anvilbag);
 	}
 	public static ItemStack getBigBag()
 	{
 		ItemStack bagbig = new ItemStack(Material.STONE_SWORD);
-		ItemMeta imb = bagbig.getItemMeta();
-		imb.setDisplayName(ChatColor.RESET + "Big Bag");
-		imb.spigot().setUnbreakable(true);
-		bagbig.setItemMeta(imb);
-		bagbig.setDurability((short) 11);
+		setDamageAndUnbreakable(bagbig, 11, "Big Bag");
+
 		
 		return doStandardModifiers(bagbig);
 	}
 	public static ItemStack getEnchantmentBag()
 	{
 		ItemStack bagenc = new ItemStack(Material.STONE_SWORD);
-		ItemMeta ime = bagenc.getItemMeta();
-		ime.setDisplayName(ChatColor.RESET + "Enchantment Bag");
-		ime.spigot().setUnbreakable(true);
-		bagenc.setItemMeta(ime);
-		bagenc.setDurability((short) 12);
+		setDamageAndUnbreakable(bagenc, 12, "Enchantment Bag");
+
 		
 		return doStandardModifiers(bagenc);
 	}
 	public static ItemStack getCraftingBag()
 	{
 		ItemStack bagcra = new ItemStack(Material.STONE_SWORD);
-		ItemMeta imc = bagcra.getItemMeta();
-		imc.setDisplayName(ChatColor.RESET + "Crafting Bag");
-		imc.spigot().setUnbreakable(true);
-		bagcra.setItemMeta(imc);
-		bagcra.setDurability((short) 13);
+		setDamageAndUnbreakable(bagcra, 13, "Crafting Bag");
 		
 		return doStandardModifiers(bagcra);
 	}
 	public static ItemStack getEnderBag()
 	{
 		ItemStack bagend = new ItemStack(Material.STONE_SWORD);
-		ItemMeta imen = bagend.getItemMeta();
-		imen.setDisplayName(ChatColor.RESET + "Ender Bag");
-		imen.spigot().setUnbreakable(true);
-		bagend.setItemMeta(imen);
-		bagend.setDurability((short) 14);
+		setDamageAndUnbreakable(bagend, 14, "Ender Bag");
 		
 		return doStandardModifiers(bagend);
 	}

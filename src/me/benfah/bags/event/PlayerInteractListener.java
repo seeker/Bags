@@ -46,7 +46,8 @@ public class PlayerInteractListener implements Listener{
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e)
 	{
-		
+		if(e.getAction() != Action.PHYSICAL)
+		{
 			Player p = e.getPlayer();
 			ItemStack h = p.getInventory().getItemInMainHand();
 				if((h.getType() == Material.STONE_SWORD))
@@ -69,7 +70,9 @@ public class PlayerInteractListener implements Listener{
 								p.openInventory(inv);
 								BagManager.bag.put(id, new Object[]{inv, inv.getSize()});
 							}
-							
+							else
+					        	   p.sendMessage(Bags.not_allowed);
+
 							
 						}
 						else
@@ -106,7 +109,8 @@ public class PlayerInteractListener implements Listener{
 								p.openInventory(inv);
 								BagManager.bag.put(id, new Object[]{inv, inv.getSize()});
 							}
-							
+							else
+					        	p.sendMessage(Bags.not_allowed);
 							
 						}
 						else
@@ -138,6 +142,9 @@ public class PlayerInteractListener implements Listener{
 					        b.setType(Material.ENCHANTMENT_TABLE);
 					        p.openEnchanting(b.getLocation(), true);
 						}
+						else
+				        	   p.sendMessage(Bags.not_allowed);
+
 					
 					}
 					if(Util.isUnbreakableAndHasDamage(h, (short) 13))
@@ -148,6 +155,9 @@ public class PlayerInteractListener implements Listener{
 
 						p.openWorkbench(null, true);
 						}
+						else
+			        	   p.sendMessage(Bags.not_allowed);
+
 					}
 					if(Util.isUnbreakableAndHasDamage(h, (short) 14))
 					{
@@ -157,6 +167,9 @@ public class PlayerInteractListener implements Listener{
 
 						p.openInventory(p.getEnderChest());
 						}
+						else
+				        	   p.sendMessage(Bags.not_allowed);
+
 					}
 					if(Util.isUnbreakableAndHasDamage(h, (short) 15))
 					{
@@ -170,9 +183,12 @@ public class PlayerInteractListener implements Listener{
 			            	Anvil_1_9_R1 a = new Anvil_1_9_R1(((CraftPlayer)p).getHandle());
 			            	a.openAnvil(p);
 			           }
+			           else
+			        	   p.sendMessage(Bags.not_allowed);
 			           
 					}
 				}
+		}
 			
 			
 			
@@ -190,7 +206,7 @@ public class PlayerInteractListener implements Listener{
 	@EventHandler
 	public void onInventoryMove(InventoryClickEvent e)
 	{
-		if(e.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY)
+		if(e.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY || e.getAction() == InventoryAction.PICKUP_ALL || e.getAction() == InventoryAction.PICKUP_HALF)
 		{
 			if(e.getInventory().getName().equals("Bag"))
 			{

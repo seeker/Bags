@@ -28,7 +28,6 @@ public class Anvil_1_9_R1 extends ContainerAnvil {
       ep.playerConnection.sendPacket(new PacketPlayOutOpenWindow(cID, "minecraft:anvil", new ChatMessage("Anvil", new Object[0]), 0));
       ep.activeContainer = anvil;
       ep.activeContainer.windowId = cID;
-      //ep.activeContainer.addSlotListener(ep);
    }
    
    
