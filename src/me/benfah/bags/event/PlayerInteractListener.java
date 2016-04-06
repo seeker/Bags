@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -23,6 +24,7 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
 import me.benfah.bags.main.Bags;
+import me.benfah.bags.translation.Translation;
 import me.benfah.bags.util.AnvilContainer;
 import me.benfah.bags.util.BagManager;
 import me.benfah.bags.util.Util;
@@ -41,6 +43,7 @@ public class PlayerInteractListener implements Listener{
 	final Permission bag_open_ender = new Permission("bag.open.ender", PermissionDefault.TRUE);
 	final Permission bag_open_anvil = new Permission("bag.open.anvil", PermissionDefault.TRUE);
 
+	
 	
 	@SuppressWarnings("deprecation")
 	@EventHandler
@@ -65,8 +68,15 @@ public class PlayerInteractListener implements Listener{
 								
 								String ints = h.getItemMeta().getLore().iterator().next();
 								int id = Integer.parseInt(ints);
-								Inventory inv = BagManager.bag.get(id) != null ? ((Inventory) BagManager.bag.get(id)[0]) : Bukkit.createInventory(p, 27, "Bag");
+								Inventory inv = BagManager.bag.get(id) != null ? ((Inventory) BagManager.bag.get(id)[0]) : Bukkit.createInventory(p, 27, Translation.bag_inventory);
 								
+								ItemStack stack = e.getPlayer().getInventory().getItemInMainHand();
+								if(!stack.getItemMeta().getDisplayName().equals(Translation.bag))
+								{
+									ItemMeta im = stack.getItemMeta();
+									im.setDisplayName(ChatColor.RESET + Translation.bag);
+									stack.setItemMeta(im);
+								}
 								p.openInventory(inv);
 								BagManager.bag.put(id, new Object[]{inv, inv.getSize()});
 							}
@@ -104,8 +114,14 @@ public class PlayerInteractListener implements Listener{
 
 								String ints = h.getItemMeta().getLore().iterator().next();
 								int id = Integer.parseInt(ints);
-								Inventory inv = BagManager.bag.get(id) != null ? (Inventory) BagManager.bag.get(id)[0] : Bukkit.createInventory(p, 54, "Bag");
-								
+								Inventory inv = BagManager.bag.get(id) != null ? (Inventory) BagManager.bag.get(id)[0] : Bukkit.createInventory(p, 54, Translation.bag_inventory);
+								ItemStack stack = e.getPlayer().getInventory().getItemInMainHand();
+								if(!stack.getItemMeta().getDisplayName().equals(Translation.bag_big))
+								{
+									ItemMeta im = stack.getItemMeta();
+									im.setDisplayName(ChatColor.RESET + Translation.bag_big);
+									stack.setItemMeta(im);
+								}
 								p.openInventory(inv);
 								BagManager.bag.put(id, new Object[]{inv, inv.getSize()});
 							}
@@ -136,7 +152,13 @@ public class PlayerInteractListener implements Listener{
 						if(p.hasPermission(bag_open_enchant))
 						{
 							Bags.playOpenSound(p);
-
+							ItemStack stack = e.getPlayer().getInventory().getItemInMainHand();
+							if(!stack.getItemMeta().getDisplayName().equals(Translation.bag_enc))
+							{
+								ItemMeta im = stack.getItemMeta();
+								im.setDisplayName(ChatColor.RESET + Translation.bag_enc);
+								stack.setItemMeta(im);
+							}
 					        Block b = p.getWorld().getBlockAt(new Location(p.getWorld(), 10000,255,10000));
 					        if(!(b.getType() == Material.ENCHANTMENT_TABLE))
 					        b.setType(Material.ENCHANTMENT_TABLE);
@@ -151,9 +173,16 @@ public class PlayerInteractListener implements Listener{
 					{
 						if(p.hasPermission(bag_open_crafting))
 						{
+							
 							Bags.playOpenSound(p);
-
-						p.openWorkbench(null, true);
+							ItemStack stack = e.getPlayer().getInventory().getItemInMainHand();
+							if(!stack.getItemMeta().getDisplayName().equals(Translation.bag_craft))
+							{
+								ItemMeta im = stack.getItemMeta();
+								im.setDisplayName(ChatColor.RESET + Translation.bag_craft);
+								stack.setItemMeta(im);
+							}
+							p.openWorkbench(null, true);
 						}
 						else
 			        	   p.sendMessage(Bags.not_allowed);
@@ -164,7 +193,13 @@ public class PlayerInteractListener implements Listener{
 						if(p.hasPermission(bag_open_ender))
 						{
 							Bags.playOpenSound(p);
-
+							ItemStack stack = e.getPlayer().getInventory().getItemInMainHand();
+							if(!stack.getItemMeta().getDisplayName().equals(Translation.bag_ender))
+							{
+								ItemMeta im = stack.getItemMeta();
+								im.setDisplayName(ChatColor.RESET + Translation.bag_ender);
+								stack.setItemMeta(im);
+							}
 						p.openInventory(p.getEnderChest());
 						}
 						else
@@ -179,7 +214,13 @@ public class PlayerInteractListener implements Listener{
 			           if(p.hasPermission(bag_open_anvil))
 			           {
 							Bags.playOpenSound(p);
-
+							ItemStack stack = e.getPlayer().getInventory().getItemInMainHand();
+							if(!stack.getItemMeta().getDisplayName().equals(Translation.bag_anvil))
+							{
+								ItemMeta im = stack.getItemMeta();
+								im.setDisplayName(ChatColor.RESET + Translation.bag_anvil);
+								stack.setItemMeta(im);
+							}
 			            	Anvil_1_9_R1 a = new Anvil_1_9_R1(((CraftPlayer)p).getHandle());
 			            	a.openAnvil(p);
 			           }

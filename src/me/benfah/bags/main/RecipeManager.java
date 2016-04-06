@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import me.benfah.bags.translation.Translation;
 import me.benfah.bags.util.Attributes;
 import me.benfah.bags.util.Attributes.Attribute;
 import me.benfah.bags.util.Attributes.AttributeType;
@@ -94,14 +95,14 @@ public class RecipeManager {
 	public static ItemStack getBag()
 	{
 		ItemStack bag = new ItemStack(Material.STONE_SWORD);
-		setDamageAndUnbreakable(bag, 10, "Bag");
+		setDamageAndUnbreakable(bag, 10, Translation.bag);
 		
 		return doStandardModifiers(bag);
 	}
 	public static ItemStack getAnvilBag()
 	{
 		ItemStack anvilbag = new ItemStack(Material.STONE_SWORD);
-		setDamageAndUnbreakable(anvilbag, 15, "Anvil Bag");
+		setDamageAndUnbreakable(anvilbag, 15, Translation.bag_anvil);
 
 		
 		return doStandardModifiers(anvilbag);
@@ -109,7 +110,7 @@ public class RecipeManager {
 	public static ItemStack getBigBag()
 	{
 		ItemStack bagbig = new ItemStack(Material.STONE_SWORD);
-		setDamageAndUnbreakable(bagbig, 11, "Big Bag");
+		setDamageAndUnbreakable(bagbig, 11, Translation.bag_big);
 
 		
 		return doStandardModifiers(bagbig);
@@ -117,7 +118,7 @@ public class RecipeManager {
 	public static ItemStack getEnchantmentBag()
 	{
 		ItemStack bagenc = new ItemStack(Material.STONE_SWORD);
-		setDamageAndUnbreakable(bagenc, 12, "Enchantment Bag");
+		setDamageAndUnbreakable(bagenc, 12, Translation.bag_enc);
 
 		
 		return doStandardModifiers(bagenc);
@@ -125,14 +126,14 @@ public class RecipeManager {
 	public static ItemStack getCraftingBag()
 	{
 		ItemStack bagcra = new ItemStack(Material.STONE_SWORD);
-		setDamageAndUnbreakable(bagcra, 13, "Crafting Bag");
+		setDamageAndUnbreakable(bagcra, 13, Translation.bag_craft);
 		
 		return doStandardModifiers(bagcra);
 	}
 	public static ItemStack getEnderBag()
 	{
 		ItemStack bagend = new ItemStack(Material.STONE_SWORD);
-		setDamageAndUnbreakable(bagend, 14, "Ender Bag");
+		setDamageAndUnbreakable(bagend, 14, Translation.bag_ender);
 		
 		return doStandardModifiers(bagend);
 	}

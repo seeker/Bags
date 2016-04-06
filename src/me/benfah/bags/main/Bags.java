@@ -19,6 +19,7 @@ import me.benfah.bags.command.CommandBags;
 import me.benfah.bags.event.CraftListener;
 import me.benfah.bags.event.PlayerInteractListener;
 import me.benfah.bags.event.PlayerJoinListener;
+import me.benfah.bags.translation.Translation;
 import me.benfah.bags.util.BagManager;
 import me.benfah.bags.util.SaveRunnable;
 
@@ -31,14 +32,12 @@ public class Bags extends JavaPlugin{
 	
 	
 	
-	
 	public static void playOpenSound(Player p){p.playSound(p.getLocation(), Sound.ENTITY_BAT_TAKEOFF,  0.5f, 1f);}
 	@Override
 	public void onEnable() {
 		
 		getCommand("bags").setExecutor(new CommandBags());
  		cfgFile = new File(getDataFolder(), "cfg.yml");
- 		
  		
  		
 		not_allowed = ChatColor.RED + "You are not allowed to do this!";
@@ -48,6 +47,15 @@ public class Bags extends JavaPlugin{
 		Bukkit.getPluginManager().registerEvents(new CraftListener(), this);
 		cfg.addDefault("resourcepack", true);
 		bm = new BagManager(this);
+		
+		if(!cfg.contains("langfile"))
+		{
+			cfg.set("langfile", "en.yml");
+		}
+		
+		Translation.registerFiles();
+		Translation.readTranslation();
+		
 		
 		Bukkit.getScheduler().runTaskTimerAsynchronously(this, new SaveRunnable(), 2400L, 2400L);
 		File f = new File(getDataFolder(), "saveb64.dat");

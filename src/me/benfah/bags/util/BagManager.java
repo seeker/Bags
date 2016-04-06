@@ -17,6 +17,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import me.benfah.bags.main.Bags;
+import me.benfah.bags.translation.Translation;
 
 public class BagManager
 {
@@ -47,7 +48,7 @@ public class BagManager
 			String[] v = itv.next();
 			ItemStack[] vf = InventorySerializer.itemStackArrayFromBase64(v[0]);
 			int size = (Integer) InventorySerializer.fromBase64Obj(v[1]);
-			Inventory inv = Bukkit.createInventory(null, size, "Bag");
+			Inventory inv = Bukkit.createInventory(null, size, Translation.bag_inventory);
 			inv.setContents(vf);
 			bag.put(k, new Object[]{inv,size});
 		}

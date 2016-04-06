@@ -10,6 +10,7 @@ import org.bukkit.permissions.PermissionDefault;
 
 import me.benfah.bags.main.Bags;
 import me.benfah.bags.main.RecipeManager;
+import me.benfah.bags.translation.Translation;
 
 public class CommandBags implements CommandExecutor{
 
@@ -25,9 +26,9 @@ public class CommandBags implements CommandExecutor{
 				if(args[0].equalsIgnoreCase("credits"))
 				{
 					
-					sender.sendMessage(ChatColor.GOLD + "benfah | For coding this plugin :3");
-					sender.sendMessage(ChatColor.GOLD + "Halbzwilling | For discovering that texture trick which doesn't affects the game :3");
-					sender.sendMessage(ChatColor.GOLD + "Eydamos | For the inspiration and the textures :3");
+					sender.sendMessage(Translation.bag_credits1);
+					sender.sendMessage(Translation.bag_credits2);
+					sender.sendMessage(Translation.bag_credits3);
 
 				}
 				if(args[0].equalsIgnoreCase("resource"))
@@ -40,7 +41,7 @@ public class CommandBags implements CommandExecutor{
 							
 						}
 						else
-						System.out.println("You are not a player!");
+						System.out.println(Translation.not_allowed);
 					}
 					
 					
@@ -72,7 +73,7 @@ public class CommandBags implements CommandExecutor{
 							
 						}
 						else
-						sender.sendMessage(ChatColor.RED + "Syntax: /bags give <normal:big:craft:enchant:ender:anvil>");
+						sender.sendMessage(Translation.bag_give_syntax);
 					}
 					else
 					sender.sendMessage(Bags.not_allowed);
@@ -84,9 +85,9 @@ public class CommandBags implements CommandExecutor{
 			}
 			else
 			{
-				sender.sendMessage(ChatColor.GOLD + "/bags credits | Shows the credits of the plugin :3");
-				sender.sendMessage(ChatColor.GOLD + "/bags resource | Sends a resourcepack request");
-				sender.sendMessage(ChatColor.GOLD + "/bags give <Bag> | Gives you the bag you specified");
+				sender.sendMessage(Translation.bag_cmdhelp1);
+				sender.sendMessage(Translation.bag_cmdhelp2);
+				sender.sendMessage(Translation.bag_cmdhelp3);
 			}
 			
 		}
