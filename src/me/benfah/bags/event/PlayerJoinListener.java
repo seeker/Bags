@@ -11,6 +11,7 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
 import me.benfah.bags.main.Bags;
+import me.benfah.bags.util.Util;
 
 public class PlayerJoinListener implements Listener{
 
@@ -23,7 +24,7 @@ public class PlayerJoinListener implements Listener{
 		{
 			if(e.getPlayer().hasPermission(new Permission("bag.resource",PermissionDefault.TRUE)))
 			{
-				e.getPlayer().setResourcePack("https://www.dropbox.com/s/kllx5y7aqv5x317/Bags2.zip?dl=1");
+				Util.sendRequest(e.getPlayer());
 			}
 		}
 		

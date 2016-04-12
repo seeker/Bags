@@ -11,6 +11,7 @@ import org.bukkit.permissions.PermissionDefault;
 import me.benfah.bags.main.Bags;
 import me.benfah.bags.main.RecipeManager;
 import me.benfah.bags.translation.Translation;
+import me.benfah.bags.util.Util;
 
 public class CommandBags implements CommandExecutor{
 
@@ -37,8 +38,7 @@ public class CommandBags implements CommandExecutor{
 					{
 						if(sender instanceof Player)
 						{
-							((Player)sender).setResourcePack("https://www.dropbox.com/s/dc2bpx4w0loavuo/Bags2.zip?dl=1");
-							
+							Util.sendRequest((Player)sender);
 						}
 						else
 						System.out.println(Translation.not_allowed);
