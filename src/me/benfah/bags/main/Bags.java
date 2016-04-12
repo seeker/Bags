@@ -45,7 +45,6 @@ public class Bags extends JavaPlugin{
 		Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new CraftListener(), this);
-		cfg.addDefault("resourcepack", true);
 		bm = new BagManager(this);
 		
 		if(!cfg.contains("langfile"))
@@ -53,6 +52,17 @@ public class Bags extends JavaPlugin{
 			cfg.set("langfile", "en.yml");
 		}
 		
+		if(!cfg.contains("custom-resourcepack"))
+		cfg.set("custom-resourcepack", false);
+		
+		if(!cfg.contains("custom-resourcepack-link"))
+		cfg.set("custom-resourcepack-link", "Replace_me_with_the_link");
+		
+		try {
+			cfg.save(cfgFile);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		Translation.registerFiles();
 		Translation.readTranslation();
 		
@@ -81,11 +91,7 @@ public class Bags extends JavaPlugin{
 	public void onDisable() {
 		
 		bm.shutdown();
-		try {
-			cfg.save(cfgFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
 	
 	
