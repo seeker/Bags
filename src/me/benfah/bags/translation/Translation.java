@@ -46,21 +46,25 @@ public class Translation
 			if(!transFile.exists())
 			{
 			transFile.createNewFile();
+			
 			transCfg = YamlConfiguration.loadConfiguration(transFile);
-			putStandardTranslation();
 			}
 			else
 			transCfg = YamlConfiguration.loadConfiguration(transFile);
+			
+			putStandardTranslation();
 
+			
 		} catch (IOException e1) {
 			System.err.println("Can't create the en.yml lang file!");
 			
 		}
 		
 	}
-	
+
 	public static void putStandardTranslation()
 	{
+		
 		transCfg.set("not_allowed", "&4You are not allowed to do this!");
 		transCfg.set("bag", "Bag");
 		transCfg.set("bag_big", "Bag");
@@ -77,12 +81,13 @@ public class Translation
 		transCfg.set("bag_cmdhelp2", "&6/bags resource | Sends a resourcepack request");
 		transCfg.set("bag_cmdhelp3", "&6/bags give <Bag> | Gives you the bag you specified");
 
+
 		try {
 			transCfg.save(transFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 	public static void readTranslation()
 	{
