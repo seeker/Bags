@@ -1,5 +1,5 @@
 name: Bags
-version: 1.2.8
+version: 1.2.10
 main: me.benfah.bags.main.Bags
 author: benfah
 commands:
