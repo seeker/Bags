@@ -6,13 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import org.apache.commons.codec.binary.Base64;
 import org.bukkit.Bukkit;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
