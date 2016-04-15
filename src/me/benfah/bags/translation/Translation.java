@@ -53,7 +53,6 @@ public class Translation
 			transCfg = YamlConfiguration.loadConfiguration(transFile);
 			
 			putStandardTranslation();
-
 			
 		} catch (IOException e1) {
 			System.err.println("Can't create the en.yml lang file!");
