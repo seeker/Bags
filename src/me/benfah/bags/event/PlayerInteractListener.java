@@ -1,5 +1,6 @@
 package me.benfah.bags.event;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,7 +95,8 @@ public class PlayerInteractListener implements Listener{
 							Bags.cfg.set("bagid",	Bags.cfg.getInt("bagid") + 1);
 							hm.setLore(lore);
 							h.setItemMeta(hm);
-							
+							save();
+
 						}
 							
 							
@@ -138,6 +140,7 @@ public class PlayerInteractListener implements Listener{
 							Bags.cfg.set("bagid",	Bags.cfg.getInt("bagid") + 1);
 							hm.setLore(lore);
 							h.setItemMeta(hm);
+							save();
 						}
 							
 							
@@ -271,5 +274,13 @@ public class PlayerInteractListener implements Listener{
 		}
 		
 	}
-
+	public static void save()
+	{
+		try {
+			Bags.cfg.save(Bags.cfgFile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
