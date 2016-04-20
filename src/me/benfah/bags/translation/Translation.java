@@ -28,6 +28,7 @@ public class Translation
 	public static String bag_cmdhelp1;
 	public static String bag_cmdhelp2;
 	public static String bag_cmdhelp3;
+	public static String bag_cmdhelp4;
 
 	public static String bag_give_syntax;
 	public static FileConfiguration transCfg;
@@ -79,6 +80,7 @@ public class Translation
 		transCfg.set("bag_cmdhelp1", "&6/bags credits | Shows the credits of the plugin :3");
 		transCfg.set("bag_cmdhelp2", "&6/bags resource | Sends a resourcepack request");
 		transCfg.set("bag_cmdhelp3", "&6/bags give <Bag> | Gives you the bag you specified");
+		transCfg.set("bag_cmdhelp4", "&6/bags edit <BagID> | Lets you edit the bag with the specific BagID");
 
 
 		try {
@@ -87,6 +89,10 @@ public class Translation
 			e.printStackTrace();
 		}
 
+	}
+	public static void updateTranslation()
+	{
+		if(!transCfg.contains("bag_cmdhelp4")) transCfg.set("bag_cmdhelp4", "&6/bags edit <BagID> | Lets you edit the bag with the specific BagID");
 	}
 	public static void readTranslation()
 	{
@@ -107,6 +113,7 @@ public class Translation
 		bag_cmdhelp1 = transCfg.getString("bag_cmdhelp1").replace("&", "§");
 		bag_cmdhelp2 = transCfg.getString("bag_cmdhelp2").replace("&", "§");
 		bag_cmdhelp3 = transCfg.getString("bag_cmdhelp3").replace("&", "§");
+		bag_cmdhelp4 = transCfg.getString("bag_cmdhelp4").replace("&", "§");
 
 
 	}

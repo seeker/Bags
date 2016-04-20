@@ -26,4 +26,11 @@ public class Util {
 		else
 		p.setResourcePack(standardLink);
 	}
+	public static boolean isInteger(String str) {
+	    try {
+	        Integer.parseInt(str);
+	        return true;
+	    } catch (NumberFormatException nfe) {}
+	    return false;
+	}
 }

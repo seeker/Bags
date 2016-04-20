@@ -1,16 +1,17 @@
 package me.benfah.bags.command;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
 import me.benfah.bags.main.Bags;
 import me.benfah.bags.main.RecipeManager;
 import me.benfah.bags.translation.Translation;
+import me.benfah.bags.util.BagManager;
 import me.benfah.bags.util.Util;
 
 public class CommandBags implements CommandExecutor{
@@ -18,12 +19,32 @@ public class CommandBags implements CommandExecutor{
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		sender.sendMessage("hi");
 
 		if(command.getName().equalsIgnoreCase("bags"))
 		{
 			if(args.length >= 1)
 			{
+				if(args[0].equalsIgnoreCase("edit"))
+				{
+					if(args.length == 2)
+					{
+							if(sender.hasPermission(new Permission("bag.edit", PermissionDefault.OP)))
+							{
+								
+								int i;
+								if(!Util.isInteger(args[1]))
+								return false;
+								if(sender instanceof Player)
+								{
+									i = Integer.parseInt(args[1]);
+									Player p = (Player)sender;
+									if(BagManager.bag.get(i) != null)
+									p.openInventory((Inventory) BagManager.bag.get(i)[0]);
+								}
+							}
+						
+					}
+				}
 				if(args[0].equalsIgnoreCase("credits"))
 				{
 					
@@ -88,6 +109,8 @@ public class CommandBags implements CommandExecutor{
 				sender.sendMessage(Translation.bag_cmdhelp1);
 				sender.sendMessage(Translation.bag_cmdhelp2);
 				sender.sendMessage(Translation.bag_cmdhelp3);
+				sender.sendMessage(Translation.bag_cmdhelp4);
+
 			}
 			
 		}

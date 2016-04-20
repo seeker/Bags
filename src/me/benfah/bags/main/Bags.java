@@ -64,6 +64,7 @@ public class Bags extends JavaPlugin{
 			e1.printStackTrace();
 		}
 		Translation.registerFiles();
+		Translation.updateTranslation();
 		Translation.readTranslation();
 		
 		
