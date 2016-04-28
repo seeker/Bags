@@ -85,11 +85,10 @@ public class PlayerInteractListener implements Listener{
 						{
 							ItemMeta hm = h.getItemMeta();
 							List<String> lore = new ArrayList<String>();
-							lore.add("" + (Bags.cfg.getInt("bagid") + 1));
-							Bags.cfg.set("bagid",	Bags.cfg.getInt("bagid") + 1);
+							lore.add("" + (Bags.countCfg.getInt("bagid") + 1));
+							Bags.countCfg.set("bagid",	Bags.countCfg.getInt("bagid") + 1);
 							hm.setLore(lore);
 							h.setItemMeta(hm);
-							save();
 
 						}
 							
@@ -131,11 +130,10 @@ public class PlayerInteractListener implements Listener{
 
 							ItemMeta hm = h.getItemMeta();
 							List<String> lore = new ArrayList<String>();
-							lore.add("" + (Bags.cfg.getInt("bagid") + 1));
-							Bags.cfg.set("bagid",	Bags.cfg.getInt("bagid") + 1);
+							lore.add("" + (Bags.countCfg.getInt("bagid") + 1));
+							Bags.countCfg.set("bagid",	Bags.countCfg.getInt("bagid") + 1);
 							hm.setLore(lore);
 							h.setItemMeta(hm);
-							save();
 						}
 							
 							

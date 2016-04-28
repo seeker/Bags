@@ -27,6 +27,9 @@ public class Bags extends JavaPlugin{
 
 	public static FileConfiguration cfg;
 	public static File cfgFile;
+	
+	public static FileConfiguration countCfg;
+	public static File countCfgFile;
 	public static BagManager bm;
 	public static String not_allowed;
 	
@@ -39,6 +42,15 @@ public class Bags extends JavaPlugin{
 		getCommand("bags").setExecutor(new CommandBags());
  		cfgFile = new File(getDataFolder(), "cfg.yml");
  		
+ 		countCfgFile = new File(getDataFolder(), "count.yml");
+ 		if(!countCfgFile.exists())
+			try {
+				countCfgFile.createNewFile();
+			} catch (IOException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+ 		countCfg = YamlConfiguration.loadConfiguration(countCfgFile);
  		
 		not_allowed = ChatColor.RED + "You are not allowed to do this!";
 		cfg = YamlConfiguration.loadConfiguration(cfgFile);
@@ -50,6 +62,18 @@ public class Bags extends JavaPlugin{
 		if(!cfg.contains("langfile"))
 		{
 			cfg.set("langfile", "en.yml");
+		}
+		
+		
+		if(cfg.contains("bagid"))
+		{
+			countCfg.set("bagid", cfg.getInt("bagid"));
+			cfg.set("bagid", null);
+			try {
+				cfg.save(cfgFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		if(!cfg.contains("custom-resourcepack"))
@@ -93,6 +117,11 @@ public class Bags extends JavaPlugin{
 		
 		bm.shutdown();
 		
+		try {
+			countCfg.save(countCfgFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

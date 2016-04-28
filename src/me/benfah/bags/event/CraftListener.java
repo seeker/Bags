@@ -27,7 +27,8 @@ public class CraftListener implements Listener{
 		{
 			if(!e.getWhoClicked().hasPermission(new Permission("bag.craft.big", PermissionDefault.TRUE)))
 			{
-				
+				System.out.println("hi");
+
 				e.setCancelled(true);
 				e.getWhoClicked().sendMessage(Bags.not_allowed);
 			}
