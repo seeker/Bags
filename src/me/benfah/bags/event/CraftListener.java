@@ -6,7 +6,7 @@ import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
-import me.benfah.bags.main.Bags;
+import me.benfah.bags.translation.Translation;
 import me.benfah.bags.util.Util;
 
 public class CraftListener implements Listener{
@@ -20,7 +20,7 @@ public class CraftListener implements Listener{
 			{
 				
 				e.setCancelled(true);
-				e.getWhoClicked().sendMessage(Bags.not_allowed);
+				e.getWhoClicked().sendMessage(Translation.not_allowed);
 			}
 		}
 		if(Util.isUnbreakableAndHasDamage(e.getInventory().getResult(), (short) 11))
@@ -30,7 +30,7 @@ public class CraftListener implements Listener{
 				System.out.println("hi");
 
 				e.setCancelled(true);
-				e.getWhoClicked().sendMessage(Bags.not_allowed);
+				e.getWhoClicked().sendMessage(Translation.not_allowed);
 			}
 		}	
 		if(Util.isUnbreakableAndHasDamage(e.getInventory().getResult(), (short) 12))
@@ -39,7 +39,7 @@ public class CraftListener implements Listener{
 			{
 				
 				e.setCancelled(true);
-				e.getWhoClicked().sendMessage(Bags.not_allowed);
+				e.getWhoClicked().sendMessage(Translation.not_allowed);
 			}
 		}	
 		if(Util.isUnbreakableAndHasDamage(e.getInventory().getResult(), (short) 13))
@@ -48,7 +48,7 @@ public class CraftListener implements Listener{
 			{
 				
 				e.setCancelled(true);
-				e.getWhoClicked().sendMessage(Bags.not_allowed);
+				e.getWhoClicked().sendMessage(Translation.not_allowed);
 			}
 		}	
 		if(Util.isUnbreakableAndHasDamage(e.getInventory().getResult(), (short) 14))
@@ -57,7 +57,7 @@ public class CraftListener implements Listener{
 			{
 				
 				e.setCancelled(true);
-				e.getWhoClicked().sendMessage(Bags.not_allowed);
+				e.getWhoClicked().sendMessage(Translation.not_allowed);
 			}
 		}
 		if(Util.isUnbreakableAndHasDamage(e.getInventory().getResult(), (short) 15))
@@ -66,7 +66,7 @@ public class CraftListener implements Listener{
 			{
 				
 				e.setCancelled(true);
-				e.getWhoClicked().sendMessage(Bags.not_allowed);
+				e.getWhoClicked().sendMessage(Translation.not_allowed);
 			}
 		}	
 	}

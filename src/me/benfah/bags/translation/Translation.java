@@ -1,10 +1,8 @@
 package me.benfah.bags.translation;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -25,6 +23,8 @@ public class Translation
 	public static String bag_credits2;
 	public static String bag_credits3;
 
+	public static String p_not_found;
+	
 	public static String bag_cmdhelp1;
 	public static String bag_cmdhelp2;
 	public static String bag_cmdhelp3;
@@ -36,29 +36,23 @@ public class Translation
 	public static void registerFiles()
 	{
 		
+
 		File langDir = new File("plugins/Bags/lang");
 		if(!langDir.exists())
 		{
 		langDir.mkdirs();
 		}
+		
+		Bags.inst.saveResource("lang/en.yml", true);
+		Bags.inst.saveResource("lang/de.yml", true);
+		Bags.inst.saveResource("lang/sv.yml", true);
+		Bags.inst.saveResource("lang/es.yml", true);
+		
 		String s = Bags.cfg.getString("langfile");
 		transFile = new File("plugins/Bags/lang", s);
-		try {
-			if(!transFile.exists())
-			{
-			transFile.createNewFile();
-			
-			transCfg = YamlConfiguration.loadConfiguration(transFile);
-			}
-			else
-			transCfg = YamlConfiguration.loadConfiguration(transFile);
-			
-			putStandardTranslation();
-			
-		} catch (IOException e1) {
-			System.err.println("Can't create the en.yml lang file!");
-			
-		}
+		System.out.println(transFile.getPath());
+		transCfg = YamlConfiguration.loadConfiguration(transFile);
+		
 		
 	}
 
@@ -82,7 +76,6 @@ public class Translation
 		transCfg.set("bag_cmdhelp3", "&6/bags give <Bag> | Gives you the bag you specified");
 		transCfg.set("bag_cmdhelp4", "&6/bags edit <BagID> | Lets you edit the bag with the specific BagID");
 
-
 		try {
 			transCfg.save(transFile);
 		} catch (IOException e) {
@@ -90,10 +83,10 @@ public class Translation
 		}
 
 	}
-	public static void updateTranslation()
-	{
-		if(!transCfg.contains("bag_cmdhelp4")) transCfg.set("bag_cmdhelp4", "&6/bags edit <BagID> | Lets you edit the bag with the specific BagID");
-	}
+	
+	
+	
+	
 	public static void readTranslation()
 	{
 		
@@ -114,7 +107,7 @@ public class Translation
 		bag_cmdhelp2 = transCfg.getString("bag_cmdhelp2").replace("&", "§");
 		bag_cmdhelp3 = transCfg.getString("bag_cmdhelp3").replace("&", "§");
 		bag_cmdhelp4 = transCfg.getString("bag_cmdhelp4").replace("&", "§");
-
+		p_not_found = transCfg.getString("p_not_found").replace("&", "§");
 
 	}
 	

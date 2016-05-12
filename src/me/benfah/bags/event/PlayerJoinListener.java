@@ -22,7 +22,7 @@ public class PlayerJoinListener implements Listener{
 	{
 		if(!tl.contains(e.getPlayer()))
 		{
-			if(e.getPlayer().hasPermission(new Permission("bag.resource",PermissionDefault.TRUE)))
+			if(e.getPlayer().hasPermission(new Permission("bag.resource",PermissionDefault.TRUE)) && Bags.cfg.getBoolean("resourcepack-enabled"))
 			{
 				Util.sendRequest(e.getPlayer());
 			}

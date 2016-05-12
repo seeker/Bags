@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import org.bukkit.Bukkit;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -57,6 +58,16 @@ public class BagManager
 		
 	}
 	
+	
+	public static Inventory getInventory(int id)
+	{
+		Object[] obj = bag.get(id);
+		Inventory oldInv = (Inventory) obj[0];
+		Inventory inv = Bukkit.createInventory(null, (Integer) obj[1], Translation.bag_inventory);
+		inv.setContents(oldInv.getContents());
+		obj[0] = inv;
+		return inv;
+	}
 	
 	public static <T extends Object> void save(T obj, File path) throws Exception
     {

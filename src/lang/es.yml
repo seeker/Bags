@@ -1,0 +1,17 @@
+﻿not_allowed: '&4No puedes hacer eso!'
+bag: Mochila
+bag_big: Mochila grande
+bag_enc: Mochila de encantamientos
+bag_craft: Mochila de crafteo
+bag_ender: Mochila del end
+bag_anvil: Mochila Yunke
+bag_inventory: Mochila
+bag_credits1: '&6benfah | Programar el plugin :3'
+bag_credits2: '&6Halbzwilling | Descubrir los trucos de las texturas :3'
+bag_credits3: '&6Eydamos | Por la inspiracion :3'
+bag_give_syntax: '&4Syntax: /bags give <normal:big:craft:enchant:ender:anvil>'
+bag_cmdhelp1: '&6/bags credits | creditos :3'
+bag_cmdhelp2: '&6/bags resource | texturas'
+bag_cmdhelp3: '&6/bags give <Bag> [Player] | obten la cartera especificada'
+bag_cmdhelp4: '&6/bags edit <BagID> | Le permite editar la bolsa con el BagID específica'
+p_not_found: '&cJugador no encontrado!'

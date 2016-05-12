@@ -8,9 +8,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.benfah.bags.translation.Translation;
-import me.benfah.bags.util.Attributes;
-import me.benfah.bags.util.Attributes.Attribute;
-import me.benfah.bags.util.Attributes.AttributeType;
+import me.benfah.bags.util.v1_9_R2.Attributes;
 
 public class RecipeManager {
 
@@ -140,12 +138,37 @@ public class RecipeManager {
 	
 	public static ItemStack doStandardModifiers(ItemStack stack)
 	{
+		String version = Bukkit.getServer().getClass().getPackage().getName().replace(".",  ",").split(",")[3];
+
 		//doing the standard modifier stuff that this item don't make damage anymore
-		Attributes ab = new Attributes(stack);
-		ab.add(Attribute.newBuilder().name("AttackSpeed").type(AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
-		ab.add(Attribute.newBuilder().name("AttackDamage").type(AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
+		
+		if(version.equals("v1_9_R1"))
+		{
+		me.benfah.bags.util.v1_9_R1.Attributes ab = new me.benfah.bags.util.v1_9_R1.Attributes(stack);
+		ab.add(me.benfah.bags.util.v1_9_R1.Attributes.Attribute.newBuilder().name("AttackSpeed").type(me.benfah.bags.util.v1_9_R1.Attributes.AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
+		ab.add(me.benfah.bags.util.v1_9_R1.Attributes.Attribute.newBuilder().name("AttackDamage").type(me.benfah.bags.util.v1_9_R1.Attributes.AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
 		ItemStack stack2 = ab.getStack();
-		stack2 = Attributes.hideFlags(stack2, 38);
+		stack2 = me.benfah.bags.util.v1_9_R1.Attributes.hideFlags(stack2, 38);
 		return stack2;
+		}
+		if(version.equals("v1_9_R2"))
+		{
+		me.benfah.bags.util.v1_9_R2.Attributes ab = new me.benfah.bags.util.v1_9_R2.Attributes(stack);
+		ab.add(me.benfah.bags.util.v1_9_R2.Attributes.Attribute.newBuilder().name("AttackSpeed").type(me.benfah.bags.util.v1_9_R2.Attributes.AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
+		ab.add(me.benfah.bags.util.v1_9_R2.Attributes.Attribute.newBuilder().name("AttackDamage").type(me.benfah.bags.util.v1_9_R2.Attributes.AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
+		ItemStack stack2 = ab.getStack();
+		stack2 = me.benfah.bags.util.v1_9_R2.Attributes.hideFlags(stack2, 38);
+		return stack2;
+		}
+		if(version.equals("v1_9_R3"))
+		{
+		me.benfah.bags.util.v1_9_R3.Attributes ab = new me.benfah.bags.util.v1_9_R3.Attributes(stack);
+		ab.add(me.benfah.bags.util.v1_9_R3.Attributes.Attribute.newBuilder().name("AttackSpeed").type(me.benfah.bags.util.v1_9_R3.Attributes.AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
+		ab.add(me.benfah.bags.util.v1_9_R3.Attributes.Attribute.newBuilder().name("AttackDamage").type(me.benfah.bags.util.v1_9_R3.Attributes.AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
+		ItemStack stack2 = ab.getStack();
+		stack2 = me.benfah.bags.util.v1_9_R3.Attributes.hideFlags(stack2, 38);
+		return stack2;
+		}
+		return null;
 	}
 }

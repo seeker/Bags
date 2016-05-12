@@ -1,0 +1,17 @@
+not_allowed: '&4You are not allowed to do this!'
+bag: Bag
+bag_big: Bag
+bag_enc: Enchantment Bag
+bag_craft: Crafting Bag
+bag_ender: Ender Bag
+bag_anvil: Anvil Bag
+bag_inventory: Bag
+bag_credits1: '&6benfah | For coding this plugin :3'
+bag_credits2: '&6Halbzwilling | For discovering the texture trick :3'
+bag_credits3: '&6Eydamos | For the inspiration :3'
+bag_give_syntax: '&4Syntax: /bags give <normal:big:craft:enchant:ender:anvil>'
+bag_cmdhelp1: '&6/bags credits | Shows the credits of the plugin :3'
+bag_cmdhelp2: '&6/bags resource | Sends a resourcepack request'
+bag_cmdhelp3: '&6/bags give <Bag> [Player] | Gives you the bag you specified'
+bag_cmdhelp4: '&6/bags edit <BagID> | Lets you edit the bag with the specific BagID'
+p_not_found: '&cPlayer not found!'

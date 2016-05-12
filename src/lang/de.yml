@@ -1,0 +1,17 @@
+﻿not_allowed: '&4Das darfst du nicht!'
+bag: Rucksack
+bag_big: Großer Rucksack
+bag_enc: Verzauberungsrucksack
+bag_craft: Werkbankrucksack
+bag_ender: Enderrucksack
+bag_anvil: Ambossrucksack
+bag_inventory: Rucksack
+bag_credits1: '&6benfah | Für das Programmieren :3'
+bag_credits2: '&6Halbzwilling | Für das Entdecken des Texturentricks :3'
+bag_credits3: '&6Eydamos | Für die Inspiration :3'
+bag_give_syntax: '&4Syntax: /bags give <normal:big:craft:enchant:ender:anvil>'
+bag_cmdhelp1: '&6/bags credits | Zeigt die Mitwirkenden :3'
+bag_cmdhelp2: '&6/bags resource | Sendet dir eine Resourcenpacketanfrage'
+bag_cmdhelp3: '&6/bags give <Bag> [Player] | Gibt dir den Rucksack den du eingibst'
+bag_cmdhelp4: '&6/bags edit <BagID> | Lässt dich den Rucksack mit dieser BagID bearbeiten'
+p_not_found: '&cSpieler nicht gefunden!'

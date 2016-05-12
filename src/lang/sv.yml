@@ -1,0 +1,17 @@
+﻿not_allowed: '&4Du saknar rättigheterna för detta!'
+bag: Väska
+bag_big: Stor Väska
+bag_enc: Förtrollningsväska
+bag_craft: Arbetsväska
+bag_ender: Enderväska
+bag_anvil: Smedjeväska
+bag_inventory: Väska
+bag_credits1: '&6benfah | För att ha kodat det här tillägget :3'
+bag_credits2: '&6Halbzwilling | För att ha upptäckt tricket med texturpaket :3'
+bag_credits3: '&6Eydamos | För inspirationen :3'
+bag_give_syntax: '&4Syntax: /bags give <normal:big:craft:enchant:ender:anvil>'
+bag_cmdhelp1: '&6/bags credits | Visar tilläggets kredit :3'
+bag_cmdhelp2: '&6/bags resource | Skickar en förfrågan om texturpaket'
+bag_cmdhelp3: '&6/bags give <Bag> | Ger dig den specifierade väskan'
+bag_cmdhelp4: '&6/bags edit <BagID> | Låter dig redigera väskan med specifika BagID'
+p_not_found: '&cSpelare inte hittas!'

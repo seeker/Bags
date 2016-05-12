@@ -63,7 +63,7 @@ public class PlayerInteractListener implements Listener{
 								
 								String ints = h.getItemMeta().getLore().iterator().next();
 								int id = Integer.parseInt(ints);
-								Inventory inv = BagManager.bag.get(id) != null ? ((Inventory) BagManager.bag.get(id)[0]) : Bukkit.createInventory(p, 27, Translation.bag_inventory);
+								Inventory inv = BagManager.bag.get(id) != null ? BagManager.getInventory(id) : Bukkit.createInventory(p, 27, Translation.bag_inventory);
 
 								if(stack.getItemMeta().getDisplayName().startsWith(ChatColor.RESET + ""))
 								if(!stack.getItemMeta().getDisplayName().equals(Translation.bag))
@@ -221,9 +221,25 @@ public class PlayerInteractListener implements Listener{
 								ItemMeta im = stack.getItemMeta();
 								im.setDisplayName(ChatColor.RESET + Translation.bag_anvil);
 								stack.setItemMeta(im);
+							String version = Bukkit.getServer().getClass().getPackage().getName().replace(".",  ",").split(",")[3];
+							if(version.equals("v1_9_R1"))
+							{
+			            	me.benfah.bags.util.v1_9_R1.Anvil.openAnvil(p);
+			            	 
 							}
-			            	Anvil a = new Anvil(((CraftPlayer)p).getHandle());
-			            	a.openAnvil(p);
+							else
+							if(version.equals("v1_9_R2"))
+							{
+				            me.benfah.bags.util.v1_9_R2.Anvil.openAnvil(p);
+
+							}
+							else
+							if(version.equals("v1_9_R3"))
+							{
+					        me.benfah.bags.util.v1_9_R3.Anvil.openAnvil(p);
+					           
+							}
+							
 			           }
 			           else
 			        	   p.sendMessage(Bags.not_allowed);
@@ -231,6 +247,7 @@ public class PlayerInteractListener implements Listener{
 					}
 				}
 		}
+	}
 			
 			
 			
@@ -248,6 +265,61 @@ public class PlayerInteractListener implements Listener{
 	@EventHandler
 	public void onInventoryMove(InventoryClickEvent e)
 	{
+		if(e.getInventory().getName().equalsIgnoreCase("Languages"))
+		{
+			e.setCancelled(true);
+			ItemStack s = e.getCurrentItem();
+			switch(s.getItemMeta().getDisplayName())
+			{
+			case "§eGerman (Deutsch)":
+				Bags.cfg.set("langfile", "de.yml");
+				Translation.registerFiles();
+				Translation.readTranslation();
+				try {
+					Bags.cfg.save(Bags.cfgFile);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				break;
+
+			case "§eEnglish":
+				Bags.cfg.set("langfile", "en.yml");
+				Translation.registerFiles();
+				Translation.readTranslation();
+				try {
+					Bags.cfg.save(Bags.cfgFile);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				break;
+
+			case "§eSwedish (Svensk)":
+				Bags.cfg.set("langfile", "sv.yml");
+				Translation.registerFiles();
+				Translation.readTranslation();
+				try {
+					Bags.cfg.save(Bags.cfgFile);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				break;
+
+			case "§eSpanish (Español)":
+				Bags.cfg.set("langfile", "es.yml");
+				Translation.registerFiles();
+				Translation.readTranslation();
+				try {
+					Bags.cfg.save(Bags.cfgFile);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				break;
+			}
+		}
 		if(e.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY || e.getAction() == InventoryAction.PICKUP_ALL || e.getAction() == InventoryAction.PICKUP_HALF)
 		{
 			if(e.getInventory().getName().equals("Bag"))

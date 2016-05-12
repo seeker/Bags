@@ -2,17 +2,18 @@ package me.benfah.bags.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.Permission;
-import org.bukkit.permissions.PermissionDefault;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.benfah.bags.command.CommandBags;
@@ -25,24 +26,43 @@ import me.benfah.bags.util.SaveRunnable;
 
 public class Bags extends JavaPlugin{
 
+	public static Inventory langInv;
+	
+	
 	public static FileConfiguration cfg;
 	public static File cfgFile;
+	
+	public static Bags inst;
 	
 	public static FileConfiguration countCfg;
 	public static File countCfgFile;
 	public static BagManager bm;
 	public static String not_allowed;
 	
-	
+	public static boolean rlActive = false;
 	
 	public static void playOpenSound(Player p){p.playSound(p.getLocation(), Sound.ENTITY_BAT_TAKEOFF,  0.5f, 1f);}
+	
 	@Override
-	public void onEnable() {
+	public void onLoad()
+	{
+	}
+	
+	@Override
+	public void onEnable()
+	{
+		
+		
+		
+		inst = this;
+		initInv();
+		
 		
 		getCommand("bags").setExecutor(new CommandBags());
  		cfgFile = new File(getDataFolder(), "cfg.yml");
  		
  		countCfgFile = new File(getDataFolder(), "count.yml");
+ 	
  		if(!countCfgFile.exists())
 			try {
 				countCfgFile.createNewFile();
@@ -58,7 +78,8 @@ public class Bags extends JavaPlugin{
 		Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new CraftListener(), this);
 		bm = new BagManager(this);
-		
+		if(!cfg.contains("resourcepack-enabled"))
+		cfg.set("resourcepack-enabled", true);
 		if(!cfg.contains("langfile"))
 		{
 			cfg.set("langfile", "en.yml");
@@ -88,7 +109,6 @@ public class Bags extends JavaPlugin{
 			e1.printStackTrace();
 		}
 		Translation.registerFiles();
-		Translation.updateTranslation();
 		Translation.readTranslation();
 		
 		
@@ -124,7 +144,53 @@ public class Bags extends JavaPlugin{
 		}
 	}
 	
-	
+	@SuppressWarnings("serial")
+	public static void initInv()
+	{
+		ItemStack stackDE = new ItemStack(Material.WOOL, 1, (short) 14);
+		ItemStack stackEN = new ItemStack(Material.WOOL, 1);
+		ItemStack stackSV = new ItemStack(Material.WOOL, 1, (short) 11);
+		ItemStack stackES = new ItemStack(Material.WOOL, 1, (short) 4);
+		
+		ItemMeta imDE = stackDE.getItemMeta();
+		ItemMeta imEN = stackEN.getItemMeta();
+		ItemMeta imSV = stackSV.getItemMeta();
+		ItemMeta imES = stackES.getItemMeta();
+		
+		imDE.setDisplayName(ChatColor.YELLOW + "German (Deutsch)");
+		imEN.setDisplayName(ChatColor.YELLOW + "English");
+		imSV.setDisplayName(ChatColor.YELLOW + "Swedish (Svensk)");
+		imES.setDisplayName(ChatColor.YELLOW + "Spanish (Español)");
+		imDE.setLore(new ArrayList<String>(){{
+			add("");
+			add(ChatColor.GREEN + "> Translation by: benfah");
+		}});
+		imEN.setLore(new ArrayList<String>(){{
+			add("");
+			add(ChatColor.GREEN + "> Translation by: benfah");
+		}});
+		imSV.setLore(new ArrayList<String>(){{
+			add("");
+			add(ChatColor.GREEN + "> Translation by: sketaful");
+		}});
+		
+		imES.setLore(new ArrayList<String>(){{
+			add("");
+			add(ChatColor.GREEN + "> Translation by: WasdCat");
+		}});
+		
+		stackDE.setItemMeta(imDE);
+		stackEN.setItemMeta(imEN);
+		stackSV.setItemMeta(imSV);
+		stackES.setItemMeta(imES);
+		
+		langInv = Bukkit.createInventory(null,9, "Languages");
+		langInv.addItem(stackEN);
+		langInv.addItem(stackSV);
+		langInv.addItem(stackES);
+		langInv.addItem(stackDE);
+
+	}
 	
 	
 }

@@ -1,5 +1,7 @@
 package me.benfah.bags.command;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -43,6 +45,13 @@ public class CommandBags implements CommandExecutor{
 								}
 							}
 						
+					}
+				}
+				if(args[0].equalsIgnoreCase("lang"))
+				{
+					if(sender.hasPermission(new Permission("bag.lang", PermissionDefault.OP)))
+					{
+						((Player)sender).openInventory(Bags.langInv);
 					}
 				}
 				if(args[0].equalsIgnoreCase("credits"))
@@ -94,10 +103,34 @@ public class CommandBags implements CommandExecutor{
 							
 						}
 						else
+						if(args.length == 3)
+						{
+							Player target = Bukkit.getPlayer(args[2]);
+							if(target != null)
+							{
+							if(args[1].equalsIgnoreCase("normal"))
+								target.getInventory().addItem(RecipeManager.getBag());
+							if(args[1].equalsIgnoreCase("big"))
+								target.getInventory().addItem(RecipeManager.getBigBag());
+							if(args[1].equalsIgnoreCase("craft"))
+								target.getInventory().addItem(RecipeManager.getCraftingBag());
+							if(args[1].equalsIgnoreCase("ender"))
+								target.getInventory().addItem(RecipeManager.getEnderBag());
+							if(args[1].equalsIgnoreCase("enchant"))
+								target.getInventory().addItem(RecipeManager.getEnchantmentBag());
+							if(args[1].equalsIgnoreCase("anvil"))
+								target.getInventory().addItem(RecipeManager.getAnvilBag());
+							}
+							else
+							{
+								sender.sendMessage(Translation.p_not_found);
+							}
+						}
+						else
 						sender.sendMessage(Translation.bag_give_syntax);
 					}
 					else
-					sender.sendMessage(Bags.not_allowed);
+					sender.sendMessage(Translation.not_allowed);
 				}
 				
 				
@@ -110,7 +143,7 @@ public class CommandBags implements CommandExecutor{
 				sender.sendMessage(Translation.bag_cmdhelp2);
 				sender.sendMessage(Translation.bag_cmdhelp3);
 				sender.sendMessage(Translation.bag_cmdhelp4);
-
+				sender.sendMessage(ChatColor.GOLD + "/bags lang");
 			}
 			
 		}
