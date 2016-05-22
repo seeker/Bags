@@ -50,7 +50,6 @@ public class Translation
 		
 		String s = Bags.cfg.getString("langfile");
 		transFile = new File("plugins/Bags/lang", s);
-		System.out.println(transFile.getPath());
 		transCfg = YamlConfiguration.loadConfiguration(transFile);
 		
 		

@@ -63,7 +63,7 @@ public class PlayerInteractListener implements Listener{
 								
 								String ints = h.getItemMeta().getLore().iterator().next();
 								int id = Integer.parseInt(ints);
-								Inventory inv = BagManager.bag.get(id) != null ? BagManager.getInventory(id) : Bukkit.createInventory(p, 27, Translation.bag_inventory);
+								Inventory inv = BagManager.bag.get(id) != null ? BagManager.getInventory(id) : Bukkit.createInventory(p, Bags.cfg.getInt("bag_size"), Translation.bag_inventory);
 
 								if(stack.getItemMeta().getDisplayName().startsWith(ChatColor.RESET + ""))
 								if(!stack.getItemMeta().getDisplayName().equals(Translation.bag))
@@ -106,11 +106,10 @@ public class PlayerInteractListener implements Listener{
 							if(p.hasPermission(bag_open_big))
 							{
 								Bags.playOpenSound(p);
-
 								String ints = h.getItemMeta().getLore().iterator().next();
 								int id = Integer.parseInt(ints);
-								Inventory inv = BagManager.bag.get(id) != null ? (Inventory) BagManager.bag.get(id)[0] : Bukkit.createInventory(p, 54, Translation.bag_inventory);
 								ItemStack stack = e.getPlayer().getInventory().getItemInMainHand();
+								Inventory inv = BagManager.bag.get(id) != null ? (Inventory) BagManager.getInventory(id) : Bukkit.createInventory(p, Bags.cfg.getInt("bag_big_size"), Translation.bag_inventory);
 								if(stack.getItemMeta().getDisplayName().startsWith(ChatColor.RESET + ""))
 								if(!stack.getItemMeta().getDisplayName().equals(Translation.bag_big))
 								{
@@ -278,7 +277,6 @@ public class PlayerInteractListener implements Listener{
 				try {
 					Bags.cfg.save(Bags.cfgFile);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				break;
@@ -290,7 +288,6 @@ public class PlayerInteractListener implements Listener{
 				try {
 					Bags.cfg.save(Bags.cfgFile);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				break;
@@ -302,7 +299,6 @@ public class PlayerInteractListener implements Listener{
 				try {
 					Bags.cfg.save(Bags.cfgFile);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				break;
@@ -314,7 +310,6 @@ public class PlayerInteractListener implements Listener{
 				try {
 					Bags.cfg.save(Bags.cfgFile);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				break;
@@ -322,7 +317,7 @@ public class PlayerInteractListener implements Listener{
 		}
 		if(e.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY || e.getAction() == InventoryAction.PICKUP_ALL || e.getAction() == InventoryAction.PICKUP_HALF)
 		{
-			if(e.getInventory().getName().equals("Bag"))
+			if(e.getInventory().getName().equals(Translation.bag_inventory))
 			{
 				if(e.getCurrentItem().getType() != Material.AIR)
 				{
