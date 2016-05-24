@@ -146,7 +146,7 @@ public class RecipeManager {
 		{
 		me.benfah.bags.util.v1_9_R1.Attributes ab = new me.benfah.bags.util.v1_9_R1.Attributes(stack);
 		ab.add(me.benfah.bags.util.v1_9_R1.Attributes.Attribute.newBuilder().name("AttackSpeed").type(me.benfah.bags.util.v1_9_R1.Attributes.AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
-		ab.add(me.benfah.bags.util.v1_9_R1.Attributes.Attribute.newBuilder().name("AttackDamage").type(me.benfah.bags.util.v1_9_R1.Attributes.AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
+		ab.add(me.benfah.bags.util.v1_9_R1.Attributes.Attribute.newBuilder().name("AttackDamage").type(me.benfah.bags.util.v1_9_R1.Attributes.AttributeType.GENERIC_ATTACK_DAMAGE).amount(0).build());
 		ItemStack stack2 = ab.getStack();
 		stack2 = me.benfah.bags.util.v1_9_R1.Attributes.hideFlags(stack2, 38);
 		return stack2;
@@ -155,7 +155,7 @@ public class RecipeManager {
 		{
 		me.benfah.bags.util.v1_9_R2.Attributes ab = new me.benfah.bags.util.v1_9_R2.Attributes(stack);
 		ab.add(me.benfah.bags.util.v1_9_R2.Attributes.Attribute.newBuilder().name("AttackSpeed").type(me.benfah.bags.util.v1_9_R2.Attributes.AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
-		ab.add(me.benfah.bags.util.v1_9_R2.Attributes.Attribute.newBuilder().name("AttackDamage").type(me.benfah.bags.util.v1_9_R2.Attributes.AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
+		ab.add(me.benfah.bags.util.v1_9_R2.Attributes.Attribute.newBuilder().name("AttackDamage").type(me.benfah.bags.util.v1_9_R2.Attributes.AttributeType.GENERIC_ATTACK_DAMAGE).amount(0).build());
 		ItemStack stack2 = ab.getStack();
 		stack2 = me.benfah.bags.util.v1_9_R2.Attributes.hideFlags(stack2, 38);
 		return stack2;
@@ -164,7 +164,7 @@ public class RecipeManager {
 		{
 		me.benfah.bags.util.v1_9_R3.Attributes ab = new me.benfah.bags.util.v1_9_R3.Attributes(stack);
 		ab.add(me.benfah.bags.util.v1_9_R3.Attributes.Attribute.newBuilder().name("AttackSpeed").type(me.benfah.bags.util.v1_9_R3.Attributes.AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
-		ab.add(me.benfah.bags.util.v1_9_R3.Attributes.Attribute.newBuilder().name("AttackDamage").type(me.benfah.bags.util.v1_9_R3.Attributes.AttributeType.GENERIC_ATTACK_DAMAGE).amount(0.5).build());
+		ab.add(me.benfah.bags.util.v1_9_R3.Attributes.Attribute.newBuilder().name("AttackDamage").type(me.benfah.bags.util.v1_9_R3.Attributes.AttributeType.GENERIC_ATTACK_DAMAGE).amount(0).build());
 		ItemStack stack2 = ab.getStack();
 		stack2 = me.benfah.bags.util.v1_9_R3.Attributes.hideFlags(stack2, 38);
 		return stack2;

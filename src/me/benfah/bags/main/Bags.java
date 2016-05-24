@@ -62,7 +62,7 @@ public class Bags extends JavaPlugin{
  		cfgFile = new File(getDataFolder(), "cfg.yml");
  		
  		countCfgFile = new File(getDataFolder(), "count.yml");
- 	
+ 		
  		if(!countCfgFile.exists())
 			try {
 				countCfgFile.createNewFile();
@@ -85,6 +85,11 @@ public class Bags extends JavaPlugin{
 			cfg.set("langfile", "en.yml");
 		}
 		
+		if(!cfg.contains("bag_size"))
+		cfg.set("bag_size", 27);
+		
+		if(!cfg.contains("bag_big_size"))
+		cfg.set("bag_big_size", 54);
 		
 		if(cfg.contains("bagid"))
 		{
@@ -96,7 +101,6 @@ public class Bags extends JavaPlugin{
 				e.printStackTrace();
 			}
 		}
-		
 		if(!cfg.contains("custom-resourcepack"))
 		cfg.set("custom-resourcepack", false);
 		
