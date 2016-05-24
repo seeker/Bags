@@ -22,6 +22,9 @@ public class RecipeManager {
 	{
 		//Standard Bag
 		ShapedRecipe sr = new ShapedRecipe(getBag());
+		
+		
+		
 		sr.shape("ILI", "LSL", "LLL");
 		sr.setIngredient('S', Material.STRING);
 		sr.setIngredient('L', Material.LEATHER);
