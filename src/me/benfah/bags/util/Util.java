@@ -31,6 +31,18 @@ public class Util {
 		else
 		p.setResourcePack(standardLink);
 	}
+	
+	public static Object[] resizeArray(Object[] objects, int size)
+	{
+		Object[] objs = new Object[size+1];
+		for(int i = 0; i < objects.length; i++)
+		{
+			objs[i] = objects[i];
+		}
+		return objs;
+		
+	}
+	
 	public static boolean isInteger(String str) {
 	    try {
 	        Integer.parseInt(str);

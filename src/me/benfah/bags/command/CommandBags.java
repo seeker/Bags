@@ -47,6 +47,62 @@ public class CommandBags implements CommandExecutor{
 						
 					}
 				}
+				if(args[0].equalsIgnoreCase("list"))
+				{ 
+				if(sender.hasPermission(new Permission("bag.list", PermissionDefault.OP)))
+				{
+					if(args.length >= 2)
+					{
+						if(Util.isInteger(args[1]))
+						{
+							int value = Integer.parseInt(args[1]);
+							
+							sender.sendMessage(ChatColor.DARK_AQUA + "-----------------------------------------------------");
+							
+							
+							
+
+							
+							for(int i = value * 25 - 24; i < value * 25 + 1; i++)
+							{
+								Object[] obj = BagManager.bag.get(i);
+
+								if(obj != null)
+								{
+								if(obj.length >= 4)
+								sender.sendMessage(ChatColor.DARK_AQUA + "BagID: §2" + i + "§3 | Last Used By: §2" + obj[2] + "§3 | Owner: §2" + obj[3]);
+								else
+								sender.sendMessage(ChatColor.DARK_AQUA + "BagID: §2" + i + "§3 | Last Used By: §2Unknown " + "§3| Owner: " + "§2Unknown");		
+								}
+
+							}
+							sender.sendMessage(ChatColor.DARK_AQUA + "-----------------------------------------------------");
+							sender.sendMessage("");
+
+						}
+					}
+					else
+					{
+						sender.sendMessage(ChatColor.DARK_AQUA + "-----------------------------------------------------");
+						for(int i = 1; i < 25 + 1; i++)
+						{
+							Object[] obj = BagManager.bag.get(i);
+							if(obj != null)
+							{
+							if(obj.length >= 4)
+							sender.sendMessage(ChatColor.DARK_AQUA + "BagID: §2" + i + "§3 | Last Used By: §2" + obj[2] + "§3 | Owner: §2" + obj[3]);
+							else
+							sender.sendMessage(ChatColor.DARK_AQUA + "BagID: §2" + i + "§3 | Last Used By: §2Unknown " + "§3| Owner: " + "§2Unknown");
+							}
+
+						}
+						sender.sendMessage(ChatColor.DARK_AQUA + "-----------------------------------------------------");
+						sender.sendMessage("");
+					}
+				}
+				else
+				sender.sendMessage(Translation.not_allowed);
+				}
 				if(args[0].equalsIgnoreCase("lang"))
 				{
 					if(sender.hasPermission(new Permission("bag.lang", PermissionDefault.OP)))

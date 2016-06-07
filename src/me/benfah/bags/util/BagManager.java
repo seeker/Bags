@@ -39,16 +39,25 @@ public class BagManager
 		Iterator<Integer> itk = bag64.keySet().iterator();
 		Iterator<String[]> itv = bag64.values().iterator();
 		
-		while(itk.hasNext() && itv.hasNext())
-		{
-			int k = itk.next();
-			String[] v = itv.next();
-			ItemStack[] vf = InventorySerializer.itemStackArrayFromBase64(v[0]);
-			int size = (Integer) InventorySerializer.fromBase64Obj(v[1]);
-			Inventory inv = Bukkit.createInventory(null, size, Translation.bag_inventory);
-			inv.setContents(vf);
-			bag.put(k, new Object[]{inv,size});
-		}
+			while(itk.hasNext() && itv.hasNext())
+			{
+				int k = itk.next();
+				String[] v = itv.next();
+				ItemStack[] vf = InventorySerializer.itemStackArrayFromBase64(v[0]);
+				int size = (Integer) InventorySerializer.fromBase64Obj(v[1]);
+				Inventory inv = Bukkit.createInventory(null, size, Translation.bag_inventory);
+				inv.setContents(vf);
+				if(v.length >= 4)
+				{
+				String lu = (String) InventorySerializer.fromBase64Obj(v[2]);
+				String owner = (String) InventorySerializer.fromBase64Obj(v[3]);
+				bag.put(k, new Object[]{inv, size, lu, owner});
+	
+				}
+				else
+				bag.put(k, new Object[]{inv, size});
+
+			}
 		}
 		
 		
@@ -106,8 +115,16 @@ public class BagManager
 			Object[] v = itv.next();
 			String vf = InventorySerializer.itemStackArrayToBase64(((Inventory) v[0]).getContents());
 			String size = InventorySerializer.toBase64Obj(v[1]);
-			bag64.put(k, new String[]{vf, size});
+			if(v.length >= 4)
+			{
+			String lu = InventorySerializer.toBase64Obj(v[2]);
+			String owner = InventorySerializer.toBase64Obj(v[3]);
 			
+			bag64.put(k, new String[]{vf, size, lu, owner});
+			}
+			else
+			bag64.put(k, new String[]{vf, size});
+
 		}
 		
 		try {

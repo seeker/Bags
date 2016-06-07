@@ -64,7 +64,7 @@ public class PlayerInteractListener implements Listener{
 								String ints = h.getItemMeta().getLore().iterator().next();
 								int id = Integer.parseInt(ints);
 								Inventory inv = BagManager.bag.get(id) != null ? BagManager.getInventory(id) : Bukkit.createInventory(p, Bags.cfg.getInt("bag_size"), Translation.bag_inventory);
-
+								
 								if(stack.getItemMeta().getDisplayName().startsWith(ChatColor.RESET + ""))
 								if(!stack.getItemMeta().getDisplayName().equals(Translation.bag))
 								{
@@ -74,7 +74,14 @@ public class PlayerInteractListener implements Listener{
 									stack.setItemMeta(im);
 								}
 								p.openInventory(inv);
-								BagManager.bag.put(id, new Object[]{inv, inv.getSize()});
+								
+								if(BagManager.bag.get(id) != null ? BagManager.bag.get(id).length >= 4 : false)
+								{
+								BagManager.bag.put(id, new Object[]{inv, inv.getSize(), p.getName(), BagManager.bag.get(id)[3]});
+								}
+								else
+								BagManager.bag.put(id, new Object[]{inv, inv.getSize(), p.getName(), p.getName()});
+								
 							}
 							else
 					        	   p.sendMessage(Bags.not_allowed);
@@ -108,6 +115,7 @@ public class PlayerInteractListener implements Listener{
 								Bags.playOpenSound(p);
 								String ints = h.getItemMeta().getLore().iterator().next();
 								int id = Integer.parseInt(ints);
+								
 								ItemStack stack = e.getPlayer().getInventory().getItemInMainHand();
 								Inventory inv = BagManager.bag.get(id) != null ? (Inventory) BagManager.getInventory(id) : Bukkit.createInventory(p, Bags.cfg.getInt("bag_big_size"), Translation.bag_inventory);
 								if(stack.getItemMeta().getDisplayName().startsWith(ChatColor.RESET + ""))
@@ -118,7 +126,13 @@ public class PlayerInteractListener implements Listener{
 									stack.setItemMeta(im);
 								}
 								p.openInventory(inv);
-								BagManager.bag.put(id, new Object[]{inv, inv.getSize()});
+								if(BagManager.bag.get(id) != null ? BagManager.bag.get(id).length >= 4 : false)
+								{
+								BagManager.bag.put(id, new Object[]{inv, inv.getSize(), p.getName(), BagManager.bag.get(id)[3]});
+								}
+								else
+								BagManager.bag.put(id, new Object[]{inv, inv.getSize(), p.getName(), p.getName()});
+								
 							}
 							else
 					        	p.sendMessage(Bags.not_allowed);
@@ -319,7 +333,7 @@ public class PlayerInteractListener implements Listener{
 		{
 			if(e.getInventory().getName().equals(Translation.bag_inventory))
 			{
-				if(e.getCurrentItem().getType() != Material.AIR)
+				if(e.getCurrentItem().getType() != Material.AIR && !Bags.cfg.getBoolean("bags-in-bags"))
 				{
 				if(Util.isUnbreakableAndHasDamage(e.getCurrentItem(), (short)10))
 				e.setCancelled(true);

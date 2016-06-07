@@ -39,14 +39,14 @@ public class Bags extends JavaPlugin{
 	public static BagManager bm;
 	public static String not_allowed;
 	
+	public static FileConfiguration recipeCfg;
+	public static File recipeCfgFile;
+	
 	public static boolean rlActive = false;
 	
 	public static void playOpenSound(Player p){p.playSound(p.getLocation(), Sound.ENTITY_BAT_TAKEOFF,  0.5f, 1f);}
 	
-	@Override
-	public void onLoad()
-	{
-	}
+	
 	
 	@Override
 	public void onEnable()
@@ -57,27 +57,42 @@ public class Bags extends JavaPlugin{
 		inst = this;
 		initInv();
 		
+		recipeCfgFile = new File(getDataFolder(), "recipes.yml");
 		
 		getCommand("bags").setExecutor(new CommandBags());
  		cfgFile = new File(getDataFolder(), "cfg.yml");
  		
  		countCfgFile = new File(getDataFolder(), "count.yml");
  		
+ 		if(!recipeCfgFile.exists())
+ 		{
+ 			try {
+				recipeCfgFile.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+ 		}
+ 			
+ 			
  		if(!countCfgFile.exists())
 			try {
 				countCfgFile.createNewFile();
 			} catch (IOException e2) {
-				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
  		countCfg = YamlConfiguration.loadConfiguration(countCfgFile);
- 		
+ 		recipeCfg = YamlConfiguration.loadConfiguration(recipeCfgFile);
 		not_allowed = ChatColor.RED + "You are not allowed to do this!";
 		cfg = YamlConfiguration.loadConfiguration(cfgFile);
 		Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new CraftListener(), this);
 		bm = new BagManager(this);
+		
+		
+		
+			
+		
 		if(!cfg.contains("resourcepack-enabled"))
 		cfg.set("resourcepack-enabled", true);
 		if(!cfg.contains("langfile"))
@@ -106,6 +121,10 @@ public class Bags extends JavaPlugin{
 		
 		if(!cfg.contains("custom-resourcepack-link"))
 		cfg.set("custom-resourcepack-link", "Replace_me_with_the_link");
+		
+		if(!cfg.contains("bags-in-bags"))
+		cfg.set("bags-in-bags", false);
+				
 		
 		try {
 			cfg.save(cfgFile);
