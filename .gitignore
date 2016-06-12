@@ -1,4 +1,7 @@
-/*
-!/src
-!/pom.xml
-.DS_Store
+# Eclipse IDE files
+.project
+.classpath
+/.settings/
+
+# Maven generated files
+/target/
