@@ -186,20 +186,14 @@ public class RecipeManager {
 	
 	public static ItemStack doStandardModifiers(ItemStack stack)
 	{
-		String version = Bukkit.getServer().getClass().getPackage().getName().replace(".",  ",").split(",")[3];
-
 		//doing the standard modifier stuff that this item don't make damage anymore
 		
-		if(version.equals("v1_9_R1"))
-		{
 		me.benfah.bags.util.Attributes ab = new me.benfah.bags.util.Attributes(stack);
 		ab.add(me.benfah.bags.util.Attributes.Attribute.newBuilder().name("AttackSpeed").type(me.benfah.bags.util.Attributes.AttributeType.GENERIC_ATTACK_SPEED).amount(0).build());
 		ab.add(me.benfah.bags.util.Attributes.Attribute.newBuilder().name("AttackDamage").type(me.benfah.bags.util.Attributes.AttributeType.GENERIC_ATTACK_DAMAGE).amount(0).build());
 		ItemStack stack2 = ab.getStack();
 		stack2 = me.benfah.bags.util.Attributes.hideFlags(stack2, 38);
 		return stack2;
-		}
-		return null;
 	}
 	public void setRecipeInConfig(String s, Material m1, Material m2, Material m3, Material m4, Material m5, Material m6, Material m7, Material m8, Material m9)
 	{
