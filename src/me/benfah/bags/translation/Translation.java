@@ -90,23 +90,23 @@ public class Translation
 	{
 		
 		
-		not_allowed = transCfg.getString("not_allowed").replace("&", "ง");
-		bag = transCfg.getString("bag").replace("&", "ง");
-		bag_big = transCfg.getString("bag_big").replace("&", "ง");
-		bag_enc = transCfg.getString("bag_enc").replace("&", "ง");
-		bag_craft = transCfg.getString("bag_craft").replace("&", "ง");
-		bag_ender = transCfg.getString("bag_ender").replace("&", "ง");
-		bag_anvil = transCfg.getString("bag_anvil").replace("&", "ง");
-		bag_inventory = transCfg.getString("bag_inventory").replace("&", "ง");
-		bag_credits1 = transCfg.getString("bag_credits1").replace("&", "ง");
-		bag_credits2 = transCfg.getString("bag_credits2").replace("&", "ง");
-		bag_credits3 = transCfg.getString("bag_credits3").replace("&", "ง");
-		bag_give_syntax = transCfg.getString("bag_give_syntax").replace("&", "ง");
-		bag_cmdhelp1 = transCfg.getString("bag_cmdhelp1").replace("&", "ง");
-		bag_cmdhelp2 = transCfg.getString("bag_cmdhelp2").replace("&", "ง");
-		bag_cmdhelp3 = transCfg.getString("bag_cmdhelp3").replace("&", "ง");
-		bag_cmdhelp4 = transCfg.getString("bag_cmdhelp4").replace("&", "ง");
-		p_not_found = transCfg.getString("p_not_found").replace("&", "ง");
+		not_allowed = transCfg.getString("not_allowed").replace("&", "ยง");
+		bag = transCfg.getString("bag").replace("&", "ยง");
+		bag_big = transCfg.getString("bag_big").replace("&", "ยง");
+		bag_enc = transCfg.getString("bag_enc").replace("&", "ยง");
+		bag_craft = transCfg.getString("bag_craft").replace("&", "ยง");
+		bag_ender = transCfg.getString("bag_ender").replace("&", "ยง");
+		bag_anvil = transCfg.getString("bag_anvil").replace("&", "ยง");
+		bag_inventory = transCfg.getString("bag_inventory").replace("&", "ยง");
+		bag_credits1 = transCfg.getString("bag_credits1").replace("&", "ยง");
+		bag_credits2 = transCfg.getString("bag_credits2").replace("&", "ยง");
+		bag_credits3 = transCfg.getString("bag_credits3").replace("&", "ยง");
+		bag_give_syntax = transCfg.getString("bag_give_syntax").replace("&", "ยง");
+		bag_cmdhelp1 = transCfg.getString("bag_cmdhelp1").replace("&", "ยง");
+		bag_cmdhelp2 = transCfg.getString("bag_cmdhelp2").replace("&", "ยง");
+		bag_cmdhelp3 = transCfg.getString("bag_cmdhelp3").replace("&", "ยง");
+		bag_cmdhelp4 = transCfg.getString("bag_cmdhelp4").replace("&", "ยง");
+		p_not_found = transCfg.getString("p_not_found").replace("&", "ยง");
 
 	}
 	
