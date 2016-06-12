@@ -9,7 +9,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,7 +26,6 @@ import me.benfah.bags.main.Bags;
 import me.benfah.bags.translation.Translation;
 import me.benfah.bags.util.BagManager;
 import me.benfah.bags.util.Util;
-import me.benfah.bags.util.v1_9_R1.Anvil;
 
 public class PlayerInteractListener implements Listener{
 	final Permission bag_open_small = new Permission("bag.open.small", PermissionDefault.TRUE);
@@ -239,20 +237,7 @@ public class PlayerInteractListener implements Listener{
 							{
 			            	me.benfah.bags.util.v1_9_R1.Anvil.openAnvil(p);
 			            	 
-							}
-							else
-							if(version.equals("v1_9_R2"))
-							{
-				            me.benfah.bags.util.v1_9_R2.Anvil.openAnvil(p);
-
-							}
-							else
-							if(version.equals("v1_9_R3"))
-							{
-					        me.benfah.bags.util.v1_9_R3.Anvil.openAnvil(p);
-					           
-							}
-							
+								}
 			           }
 			           else
 			        	   p.sendMessage(Bags.not_allowed);
