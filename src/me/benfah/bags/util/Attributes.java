@@ -1,4 +1,4 @@
-package me.benfah.bags.util.v1_9_R1;
+package me.benfah.bags.util;
 
 import java.lang.reflect.Field;
 import java.util.Iterator;

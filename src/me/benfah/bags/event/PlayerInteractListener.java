@@ -235,7 +235,7 @@ public class PlayerInteractListener implements Listener{
 							String version = Bukkit.getServer().getClass().getPackage().getName().replace(".",  ",").split(",")[3];
 							if(version.equals("v1_9_R1"))
 							{
-			            	me.benfah.bags.util.v1_9_R1.Anvil.openAnvil(p);
+			            	me.benfah.bags.util.Anvil.openAnvil(p);
 			            	 
 								}
 			           }

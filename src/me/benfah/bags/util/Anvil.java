@@ -1,4 +1,4 @@
-package me.benfah.bags.util.v1_9_R1;
+package me.benfah.bags.util;
 
 import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
