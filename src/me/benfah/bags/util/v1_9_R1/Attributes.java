@@ -9,22 +9,23 @@ import java.util.concurrent.ConcurrentMap;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import net.minecraft.server.v1_9_R1.NBTBase;
-import net.minecraft.server.v1_9_R1.NBTTagCompound;
-import net.minecraft.server.v1_9_R1.NBTTagList;
-
-import org.bukkit.craftbukkit.v1_9_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_9_R2.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
+
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Maps;
 
+import net.minecraft.server.v1_9_R2.NBTBase;
+import net.minecraft.server.v1_9_R2.NBTTagCompound;
+import net.minecraft.server.v1_9_R2.NBTTagList;
+
 public class Attributes {
 	public static ItemStack hideFlags(ItemStack stack, int value)
     {
-    	net.minecraft.server.v1_9_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(stack);
+		net.minecraft.server.v1_9_R2.ItemStack nmsStack = CraftItemStack.asNMSCopy(stack);
     	NBTTagCompound tc = nmsStack.getTag();
     	tc.setInt("HideFlags", value);
     	nmsStack.setTag(tc);
@@ -223,7 +224,7 @@ public class Attributes {
     }
     
     // This may be modified
-    public net.minecraft.server.v1_9_R1.ItemStack nmsStack;
+	public net.minecraft.server.v1_9_R2.ItemStack nmsStack;
     
     private NBTTagCompound parent;
     private NBTTagList attributes;
