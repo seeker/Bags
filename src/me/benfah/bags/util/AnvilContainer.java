@@ -1,8 +1,8 @@
 package me.benfah.bags.util;
 
-import net.minecraft.server.v1_9_R1.BlockPosition;
-import net.minecraft.server.v1_9_R1.ContainerAnvil;
-import net.minecraft.server.v1_9_R1.EntityHuman;
+import net.minecraft.server.v1_9_R2.BlockPosition;
+import net.minecraft.server.v1_9_R2.ContainerAnvil;
+import net.minecraft.server.v1_9_R2.EntityHuman;
 
 public class AnvilContainer extends ContainerAnvil {
  
