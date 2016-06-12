@@ -5,4 +5,4 @@ wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifac
 
 # TODO use maven or environment variable to set revision
 # generate the dependencies
-java -jar BuildTools --rev 1.9
+java -jar BuildTools.jar --rev 1.9
