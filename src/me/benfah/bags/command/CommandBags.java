@@ -70,9 +70,9 @@ public class CommandBags implements CommandExecutor{
 								if(obj != null)
 								{
 								if(obj.length >= 4)
-								sender.sendMessage(ChatColor.DARK_AQUA + "BagID: ง2" + i + "ง3 | Last Used By: ง2" + obj[2] + "ง3 | Owner: ง2" + obj[3]);
+								sender.sendMessage(ChatColor.DARK_AQUA + "BagID: ยง2" + i + "ยง3 | Last Used By: ยง2" + obj[2] + "ยง3 | Owner: ยง2" + obj[3]);
 								else
-								sender.sendMessage(ChatColor.DARK_AQUA + "BagID: ง2" + i + "ง3 | Last Used By: ง2Unknown " + "ง3| Owner: " + "ง2Unknown");		
+								sender.sendMessage(ChatColor.DARK_AQUA + "BagID: ยง2" + i + "ยง3 | Last Used By: ยง2Unknown " + "ยง3| Owner: " + "ยง2Unknown");		
 								}
 
 							}
@@ -90,9 +90,9 @@ public class CommandBags implements CommandExecutor{
 							if(obj != null)
 							{
 							if(obj.length >= 4)
-							sender.sendMessage(ChatColor.DARK_AQUA + "BagID: ง2" + i + "ง3 | Last Used By: ง2" + obj[2] + "ง3 | Owner: ง2" + obj[3]);
+							sender.sendMessage(ChatColor.DARK_AQUA + "BagID: ยง2" + i + "ยง3 | Last Used By: ยง2" + obj[2] + "ยง3 | Owner: ยง2" + obj[3]);
 							else
-							sender.sendMessage(ChatColor.DARK_AQUA + "BagID: ง2" + i + "ง3 | Last Used By: ง2Unknown " + "ง3| Owner: " + "ง2Unknown");
+							sender.sendMessage(ChatColor.DARK_AQUA + "BagID: ยง2" + i + "ยง3 | Last Used By: ยง2Unknown " + "ยง3| Owner: " + "ยง2Unknown");
 							}
 
 						}

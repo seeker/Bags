@@ -183,7 +183,7 @@ public class Bags extends JavaPlugin{
 		imDE.setDisplayName(ChatColor.YELLOW + "German (Deutsch)");
 		imEN.setDisplayName(ChatColor.YELLOW + "English");
 		imSV.setDisplayName(ChatColor.YELLOW + "Swedish (Svensk)");
-		imES.setDisplayName(ChatColor.YELLOW + "Spanish (Español)");
+		imES.setDisplayName(ChatColor.YELLOW + "Spanish (EspaÃ±ol)");
 		imDE.setLore(new ArrayList<String>(){{
 			add("");
 			add(ChatColor.GREEN + "> Translation by: benfah");

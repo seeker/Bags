@@ -269,7 +269,7 @@ public class PlayerInteractListener implements Listener{
 			ItemStack s = e.getCurrentItem();
 			switch(s.getItemMeta().getDisplayName())
 			{
-			case "§eGerman (Deutsch)":
+			case "Â§eGerman (Deutsch)":
 				Bags.cfg.set("langfile", "de.yml");
 				Translation.registerFiles();
 				Translation.readTranslation();
@@ -280,7 +280,7 @@ public class PlayerInteractListener implements Listener{
 				}
 				break;
 
-			case "§eEnglish":
+			case "Â§eEnglish":
 				Bags.cfg.set("langfile", "en.yml");
 				Translation.registerFiles();
 				Translation.readTranslation();
@@ -291,7 +291,7 @@ public class PlayerInteractListener implements Listener{
 				}
 				break;
 
-			case "§eSwedish (Svensk)":
+			case "Â§eSwedish (Svensk)":
 				Bags.cfg.set("langfile", "sv.yml");
 				Translation.registerFiles();
 				Translation.readTranslation();
@@ -302,7 +302,7 @@ public class PlayerInteractListener implements Listener{
 				}
 				break;
 
-			case "§eSpanish (Español)":
+			case "Â§eSpanish (EspaÃ±ol)":
 				Bags.cfg.set("langfile", "es.yml");
 				Translation.registerFiles();
 				Translation.readTranslation();
