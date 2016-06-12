@@ -150,6 +150,7 @@ public class Bags extends JavaPlugin{
 			e.printStackTrace();
 		}
 		
+		RecipeManager rm  = new RecipeManager();
 		super.onEnable();
 	}
 	
