@@ -3,4 +3,4 @@ language: java
 jdk:
   - oraclejdk8
   
-install: ./scripts/ci-setup.sh
+install: sh ./scripts/ci-setup.sh
